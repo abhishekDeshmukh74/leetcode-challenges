@@ -12,7 +12,7 @@ const node3 = new TreeNode(3);
 root.left = node2;
 root.right = node7;
 node2.left = node1;
-node2.right = node2;
+node2.right = node3;
 
 // var searchBST = function (root, val) {
 //   let current = root;
