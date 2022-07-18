@@ -39,3 +39,24 @@ const explore = (grid, i, j, visited) => {
     }
     return false
 }
+console.log(containsCycle([
+    ['a', 'a', 'a', 'a'],
+    ['a', 'b', 'b', 'a'],
+    ['a', 'b', 'b', 'a'],
+    ['a', 'a', 'a', 'a'],
+]))
+
+console.log(containsCycle([
+    ['b', 'a', 'c'],
+    ['c', 'a', 'c'],
+    ['d', 'd', 'c'],
+    ['b', 'c', 'c']
+]))
+
+console.log(containsCycle([
+    ['f', 'a', 'a', 'c', 'b'],
+    ['e', 'a', 'a', 'e', 'c'],
+    ['c', 'f', 'b', 'b', 'b'],
+    ['c', 'e', 'a', 'b', 'e'],
+    ['f', 'e', 'f', 'b', 'f']
+]))
