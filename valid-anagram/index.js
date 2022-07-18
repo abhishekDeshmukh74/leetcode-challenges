@@ -4,24 +4,12 @@ var isAnagram = function (s, t) {
 
   let mapS = {};
   let mapT = {};
-  for (let i = 0; i < s; i++) {
-    const charS = s.charAt(i);
-    const charT = t.charAt(i);
-    if (mapS[charS]) {
-      mapS[charS] = mapS[charS] + 1;
-    } else {
-      mapS[charS] = 1;
-    }
-    if (mapT[charT]) {
-      mapT[charT] = mapT[charT] + 1;
-    } else {
-      mapT[charT] = 1;
-    }
+  for (let i = 0; i < s.length; i++) {
+    mapS[s[i]] ? mapS[s[i]]++ : mapS[s[i]] = 1;
+    mapT[t[i]] ? mapT[t[i]]++ : mapT[t[i]] = 1;
   }
 
-  for (const key in mapS) {
-    if (mapS[key] !== mapT[key]) return false;
-  }
+  for (const key in mapS) if (mapS[key] !== mapT[key]) return false;
   return true;
 };
 
@@ -34,3 +22,5 @@ var isAnagram = function (s, t) {
 
 console.log(isAnagram('anagram', 'nagaram'));
 console.log(isAnagram('a', 'ab'));
+console.log(isAnagram('rat', 'car'));
+console.log(isAnagram('aacc', 'ccac'));
