@@ -1,3 +1,7 @@
+// DFS + Memoization
+// Time complexity: O(mn)
+// Space complexity: O(mn)
+
 var longestIncreasingPath = function (matrix) {
     if (!matrix?.length) return 0
 
