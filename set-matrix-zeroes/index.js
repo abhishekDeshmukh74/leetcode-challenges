@@ -13,7 +13,7 @@ var setZeroes = function (matrix) {
 
     for (let i = 1; i < matrix.length; i++) {
         for (let j = 1; j < matrix[i].length; j++) {
-            if (matrix[0][i] === 0 || matrix[0][j] === 0) matrix[i][j] = 0
+            if (matrix[i][0] === 0 || matrix[0][j] === 0) matrix[i][j] = 0
         }
     }
 
@@ -30,4 +30,10 @@ console.log(setZeroes([
     [1, 1, 1],
     [1, 0, 1],
     [1, 1, 1]
+]))
+console.log(setZeroes([
+    [1, 2, 3, 4],
+    [5, 0, 7, 8],
+    [0, 10, 11, 12],
+    [13, 14, 15, 0]
 ]))
