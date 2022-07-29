@@ -1,3 +1,5 @@
+// Approach 1: BFS
+
 var minKnightMoves = function (x, y) {
 
     const knightDirections = [[2, 1], [-2, 1], [2, -1], [-2, -1], [1, 2], [-1, 2], [1, -2], [-1, -2]]
@@ -19,3 +21,5 @@ var minKnightMoves = function (x, y) {
         }
     }
 };
+
+// Approach 2 Bidirectional BFS
