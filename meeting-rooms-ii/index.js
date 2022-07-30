@@ -6,10 +6,10 @@ var minMeetingRooms = function (intervals) {
     let maxStop = -Infinity;
 
     for (const [start, end] of intervals) {
-        startMap[start] ? startMap[start] = startMap[start] + 1 : startMap[start] = 1;
-        if (start < minStart) minStart = start;
+        startMap[start] ? startMap[start]++ : startMap[start] = 1;
+        endMap[end] ? endMap[end]++ : endMap[end] = 1;
 
-        endMap[end] ? endMap[end] = endMap[end] + 1 : endMap[end] = 1;
+        if (start < minStart) minStart = start;
         if (start > maxStop) maxStop = end;
     }
 
