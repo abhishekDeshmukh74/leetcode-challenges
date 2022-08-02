@@ -10,26 +10,23 @@ var orangesRotting = function (grid) {
     }
   }
 
+  const directions = [
+    [0, 1],
+    [0, -1],
+    [1, 0],
+    [-1, 0],
+  ];
+
   while (queue.length && fresh > 0) {
     const qLength = queue.length;
-    const directions = [
-      [0, 1],
-      [0, -1],
-      [1, 0],
-      [-1, 0],
-    ];
 
     for (let i = 0; i < qLength; i++) {
       const [x, y] = queue.shift();
 
-      for (const direction of directions) {
-        const [offsetX, offsetY] = direction;
-        const newX = x + offsetX;
-        const newY = y + offsetY;
-        const rInbounds = newX >= 0 && newX < grid.length;
-        const cInbounds = newY >= 0 && newY < grid[0].length;
-
-        if (!rInbounds || !cInbounds || grid[newX][newY] !== 1) continue;
+      for (const [dx, dy] of directions) {
+        const newX = x + dx;
+        const newY = y + dy;
+        if (newX < 0 || newY < 0 || newX >= grid.length || newY >= grid[0].length || grid[newX][newY] !== 1) continue;
 
         fresh--;
         grid[newX][newY] = 2;

@@ -28,7 +28,7 @@
 // };
 
 // Iterative
-// Time complexity: O(M⋅N). We're solving M⋅N subproblems. Solving each subproblem is an O(1)O(1) operation.
+// Time complexity: O(M⋅N). We're solving M⋅N subproblems. Solving each subproblem is an O(1) operation.
 // Space complexity: O(M⋅N). We'e allocating a 2D array of size M⋅N to save the answers to subproblems.
 
 var longestCommonSubsequence = function (text1, text2) {
