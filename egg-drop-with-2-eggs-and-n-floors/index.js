@@ -54,3 +54,5 @@ var twoEggDrop = function (n) {
     }
     return dfs(2, n)
 };
+
+console.log(twoEggDrop(14))
