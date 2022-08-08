@@ -22,16 +22,15 @@ const coinChange = (coins, amount) => {
     const table = Array(amount + 1).fill(null)
     table[0] = 0;
 
-    for (let i = 0; i <= table.length; i++) {
-        if (table[i] !== null) {
-            for (const coin of coins) {
-                if (i + coin > amount) continue;
-                const comb = table[i] + 1
-                if (table[i + coin] === null) {
-                    table[i + coin] = comb
-                } else {
-                    table[i + coin] = Math.min(comb, table[i + coin])
-                }
+    for (let i = 0; i <= amount; i++) {
+        if (table[i] === null) continue
+        for (const coin of coins) {
+            if (i + coin > amount) continue;
+            const comb = table[i] + 1
+            if (table[i + coin] === null) {
+                table[i + coin] = comb
+            } else {
+                table[i + coin] = Math.min(comb, table[i + coin])
             }
         }
     }
