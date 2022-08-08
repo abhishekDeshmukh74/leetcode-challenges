@@ -1,17 +1,14 @@
 var searchMatrix = function (matrix, target) {
-  let left = 0;
-  let right = matrix.length * matrix[0].length - 1;
+  let left = 0
+  let right = matrix.length * matrix[0].length - 1
 
   while (left <= right) {
-    let middle = Math.ceil((left + right) / 2);
-    const middleI = Math.floor(middle / matrix[0].length);
-    const middleJ = middle % matrix[0].length;
-    if (matrix[middleI][middleJ] >= target) {
-      if (matrix[middleI][middleJ] === target) return true;
-      right = middle - 1;
-    } else {
-      left = middle + 1;
-    }
+    let middle = Math.ceil((left + right) / 2)
+    const middleI = Math.floor(middle / matrix[0].length)
+    const middleJ = middle % matrix[0].length
+
+    if (matrix[middleI][middleJ] === target) return true
+    matrix[middleI][middleJ] > target ? right = middle - 1 : left = middle + 1
   }
   return false;
 };
