@@ -1,25 +1,24 @@
 // Recursive
-// var lengthOfLIS = function (nums) {
+var lengthOfLIS = function (nums) {
 
-//     const memo = {}
-//     let result = 1;
+    const memo = {}
+    let result = 1;
 
-//     const dfs = (i) => {
-//         if (memo[i]) return memo[i]
+    const dfs = (i) => {
+        if (memo[i]) return memo[i]
 
-//         for (let j = i + 1; j < nums.length; j++) {
-//             if (nums[j] > nums[i]) {
-//                 memo[i] = Math.max(memo[i] || 0, 1 + dfs(j))
-//                 result = Math.max(memo[i], result)
-//             }
-//         }
-//         return memo[i] || 1
-//     };
+        for (let j = i + 1; j < nums.length; j++) {
+            if (nums[j] > nums[i]) {
+                memo[i] = Math.max(memo[i] || 0, 1 + dfs(j))
+                result = Math.max(memo[i], result)
+            }
+        }
+        return memo[i] || 1
+    };
 
-//     for (let i = 0; i < nums.length; i++) dfs(i)
-
-//     return result
-// }
+    for (let i = 0; i < nums.length; i++) dfs(i)
+    return result
+}
 
 // Iterative
 var lengthOfLIS = function (nums) {
@@ -28,9 +27,7 @@ var lengthOfLIS = function (nums) {
     let max = 1;
 
     for (let i = 0; i < nums.length; i++) {
-
         for (let j = i + 1; j < nums.length; j++) {
-
             if (nums[j] > nums[i]) {
                 table[j] = Math.max(table[j], 1 + table[i])
                 max = Math.max(max, table[j])
