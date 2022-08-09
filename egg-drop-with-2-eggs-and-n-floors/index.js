@@ -7,7 +7,7 @@ var twoEggDrop = function (n) {
 
     const dfs = (eggs, floors) => {
         const key = `${eggs}-${floors}`
-        if (memo[key]) return memo[key]
+        if (key in memo) return memo[key]
         if (eggs === 1 || floors <= 1) return floors
         let min = Infinity;
 
@@ -32,7 +32,7 @@ var twoEggDrop = function (n) {
 
     const dfs = (eggs, floors) => {
         const key = `${eggs}-${floors}`
-        if (memo[key]) return memo[key]
+        if (key in memo) return memo[key]
         if (eggs === 1 || floors <= 1) return floors
         let min = Infinity
 

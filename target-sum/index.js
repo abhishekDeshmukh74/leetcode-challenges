@@ -10,7 +10,7 @@ var findTargetSumWays = function (nums, target) {
             return 0
         }
         const key = `${i},${total}`
-        if (memo[key]) return memo[key]
+        if (key in memo) return memo[key]
         memo[key] = dfs(i + 1, total + nums[i]) + dfs(i + 1, total - nums[i])
         return memo[key]
     }

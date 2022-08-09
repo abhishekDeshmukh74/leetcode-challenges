@@ -13,7 +13,7 @@ var longestIncreasingPath = function (matrix) {
         if (matrix[i][j] <= prevValue) return 0
 
         const key = `${i}-${j}`
-        if (memo[key]) return memo[key]
+        if (key in memo) return memo[key]
 
         const down = dfs(i + 1, j, matrix[i][j]);
         const top = dfs(i - 1, j, matrix[i][j]);

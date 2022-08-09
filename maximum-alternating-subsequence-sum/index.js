@@ -1,18 +1,18 @@
 // Memoized recursive
-// var maxAlternatingSum = function (nums) {
-//     // index-true/false
-//     const memo = {};
-//     const dfs = (i, even) => {
-//         if (i === nums.length) return 0;
-//         const key = `${i}-${even}`
-//         if (memo[key]) return memo[key];
+var maxAlternatingSum = function (nums) {
+    // index-true/false
+    const memo = {};
+    const dfs = (i, even) => {
+        if (i === nums.length) return 0;
+        const key = `${i}-${even}`
+        if (key in memo) return memo[key];
 
-//         let total = even ? nums[i] : nums[i] * -1;
-//         memo[key] = Math.max(total + dfs(i + 1, !even), dfs(i + 1, even))
-//         return memo[key]
-//     }
-//     return dfs(0, true)
-// };
+        let total = even ? nums[i] : nums[i] * -1;
+        memo[key] = Math.max(total + dfs(i + 1, !even), dfs(i + 1, even))
+        return memo[key]
+    }
+    return dfs(0, true)
+};
 
 var maxAlternatingSum = function (nums) {
 
