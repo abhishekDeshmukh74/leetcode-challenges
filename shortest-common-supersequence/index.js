@@ -1,8 +1,3 @@
-/**
- * @param {string} str1
- * @param {string} str2
- * @return {string}
- */
 var shortestCommonSupersequence = function (str1, str2) {
 
     const table = Array(str1.length + 1).fill().map(() => Array(str2.length + 1).fill(0))
@@ -17,7 +12,7 @@ var shortestCommonSupersequence = function (str1, str2) {
         }
     }
 
-    let superStr = '';
+    let superStr = ''
     let i = str1.length
     let j = str2.length
 
