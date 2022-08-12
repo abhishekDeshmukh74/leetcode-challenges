@@ -11,6 +11,15 @@ var maxProduct = function (nums) {
   return maxProduct;
 };
 
+
+// Intuition
+// If all the numbers are positive the product is always increasing. But when it comes to negative numbers, It gets a lot more tricky as the product of two negatives, is a positive. When we have a vector of all negatives, the signs of the product will be alternating.
+// eg. { -1, -2, -3, -4, -5 } => -1, 2, -6, 24, -120
+
+// so, to find maximum in such case, we need to track both maximum and minimum.
+// example, in {- 1, -2, -3} max of first two elements will be 2 and min will be - 2
+// but when combined with the third element - 3, our min will become - 2 * -3 = 6 which is our desired answer.
+
 // Linear approach - use max and min products per index, for -ve number swap max and min
 // Time Complexity: O(n) Space Complexity: O(1)
 var maxProduct = function (nums) {

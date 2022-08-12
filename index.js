@@ -407,29 +407,73 @@ node2.right = node4;
 //     [0, 0, 0]
 // ], 1))
 
+// Expand around center
+// var longestPalindrome = function (s) {
 
-var minKnightMoves = function (x, y) {
+//     const expandLeftAndRight = (left, right) => {
+//         while (left >= 0 && right < s.length && s[left] === s[right]) {
+//             left--
+//             right++
+//         }
+//         return right - left - 1
+//     }
 
-    const knightDirections = [[2, 1], [-2, 1], [2, -1], [-2, -1], [1, 2], [-1, 2], [1, -2], [-1, -2]]
-    const visited = new Set();
-    const queue = [[0, 0, 0]]
+//     if (!s || s.length === 0) return ''
+//     let start = 0
+//     let end = 0
 
-    while (queue.length) {
+//     for (let i = 0; i < s.length; i++) {
+//         const odd = expandLeftAndRight(i, i)
+//         const even = expandLeftAndRight(i, i + 1)
+//         const maxLength = Math.max(odd, even)
+//         if (maxLength > end - start) {
+//             start = i - (maxLength - 1) / 2
+//             end = i + maxLength / 2
+//         }
+//     }
+//     return s.slice(Math.ceil(start), end + 1)
+// }
 
-        const [currentX, currentY, currentDistance] = queue.shift();
-        if (currentX === x && currentY === y) return currentDistance;
+// console.log(longestPalindrome('babad'))
+// console.log(longestPalindrome('abacdfgdcaba'))
+// console.log(longestPalindrome('aacabdkacaa'))
+// console.log(longestPalindrome('cbbd'))
 
-        for (const [dx, dy] of knightDirections) {
-            const newX = currentX + dx;
-            const newY = currentY + dy;
-            if (visited.has(`${newX}-${newY}`)) continue
 
-            visited.add(`${newX}-${newY}`)
-            queue.push([newX, newY, currentDistance + 1])
-        }
+// var amountPainted = function (paint) {
+//     const work = []
+//     const painted = new Set();
+
+//     for (let [start, end] of paint) {
+//         const previouslyPainted = painted.size
+//         while (start !== end) {
+//             if (!painted.has(start)) painted.add(start)
+//             start++
+//         }
+//         work.push(painted.size - previouslyPainted)
+//     }
+//     return work
+// };
+
+// console.log(amountPainted([[1, 4], [4, 7], [5, 8]]))
+// console.log(amountPainted([[1, 4], [5, 8], [4, 7]]))
+// console.log(amountPainted([[1, 5], [2, 4]]))
+
+
+
+var maxProduct = function (nums) {
+    let maxProduct = [nums[0]]
+    let max = nums[0]
+    let min = nums[0]
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] < 0) [max, min] = [min, max]
+
+        max = Math.max(nums[i], nums[i] * max)
+        min = Math.min(nums[i], nums[i] * min)
+        maxProduct = Math.max(max, maxProduct)
     }
+    return maxProduct
 };
 
-console.log(minKnightMoves(1, 1))
-console.log(minKnightMoves(5, 5))
-console.log(minKnightMoves(2, 1))
+console.log(maxProduct([2, 3, -2, 4]));
