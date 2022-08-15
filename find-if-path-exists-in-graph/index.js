@@ -15,10 +15,10 @@ const validPath = function (n, edges, source, destination) {
     const visited = new Set()
     const dfs = (src, dest) => {
 
-        if (src === dest) return true
-        if (visited.has(String(src))) return false
+        if (src == dest) return true
+        if (visited.has(src)) return false
 
-        visited.add(String(src))
+        visited.add(src)
 
         for (const neighbor of graph[src]) {
             if (dfs(neighbor, dest)) return true
@@ -39,13 +39,13 @@ const validPath = function (n, edges, source, destination) {
 
     while (queue.length) {
         const current = queue.shift();
-        if (current === destination) return true
+        if (current == destination) return true
         if (!graph[current]) return true
 
-        visited.add(String(current))
+        visited.add(current)
 
         for (const neighbor of graph[current]) {
-            !visited.has(String(neighbor)) && queue.push(neighbor)
+            !visited.has(neighbor) && queue.push(neighbor)
         }
     }
     return false
