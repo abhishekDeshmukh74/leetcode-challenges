@@ -1,6 +1,6 @@
-// Time Complexity: O(4^N)because we have a total of N sticks and for each one of those matchsticks, we have 44 different possibilities for the subsets they might belong to or the side of the square they might be a part of.
+// Time Complexity: O(4^N)because we have a total of N sticks and for each one of those matchsticks, we have 4 different possibilities for the subsets they might belong to or the side of the square they might be a part of
 
-// Space Complexity: O(N).For recursive solutions, the space complexity is the stack space occupied by all the recursive calls.The deepest recursive call here would be of size NN and hence the space complexity is O(N).There is no additional space other than the recursion stack in this solution.
+// Space Complexity: O(N).For recursive solutions, the space complexity is the stack space occupied by all the recursive calls.The deepest recursive call here would be of size N and hence the space complexity is O(N).There is no additional space other than the recursion stack in this solution
 
 var makesquare = function (matchsticks) {
     const sum = matchsticks.reduce((a, c) => a + c);
