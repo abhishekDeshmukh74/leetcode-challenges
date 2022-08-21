@@ -20,11 +20,7 @@ var maxArea = function (height) {
   while (left < right) {
     const currentWater = Math.min(height[left], height[right]) * (right - left);
     if (currentWater > maxAmtWater) maxAmtWater = currentWater;
-    if (height[left] < height[right]) {
-      left++;
-    } else {
-      right--;
-    }
+    height[left] < height[right] ? left++ : right--
   }
 
   return maxAmtWater;
