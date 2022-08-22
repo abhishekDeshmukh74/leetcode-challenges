@@ -7,5 +7,20 @@ var uniquePaths = function (m, n, memo = {}) {
   return memo[key];
 };
 
+// Time complexity: O(N×M)
+//Space complexity: O(N×M)
+var uniquePaths = function (m, n) {
+
+  const table = Array(m).fill().map(() => Array(n).fill(1))
+
+  for (let i = 1; i < m; i++) {
+    for (let j = 1; j < n; j++) {
+      table[i][j] = table[i - 1][j] + table[i][j - 1]
+    }
+  }
+
+  return table[m - 1][n - 1]
+};
+
 console.log(uniquePaths(3, 7));
 console.log(uniquePaths(23, 12));
