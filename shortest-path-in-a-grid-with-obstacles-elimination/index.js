@@ -9,8 +9,8 @@ var shortestPath = function (grid, k) {
     while (queue.length) {
         let [x, y, obs, distance] = queue.shift()
 
-        if (visited.has(`${x}-${y}-${obs}`)) continue
-        if (obs === -1) continue
+        if (visited.has(`${x}-${y}-${obs}`)) continue;
+        if (obs === -1) continue;
         if (x === grid.length - 1 && y === grid[0].length - 1) return distance
 
         visited.add(`${x}-${y}-${obs}`)
@@ -18,7 +18,7 @@ var shortestPath = function (grid, k) {
         for (let [dx, dy] of directions) {
             let newX = x + dx
             let newY = y + dy
-            if (newX < 0 || newX >= grid.length || newY < 0 || newY >= grid[0].length) continue
+            if (newX < 0 || newX >= grid.length || newY < 0 || newY >= grid[0].length) continue;
             queue.push([newX, newY, grid[newX][newY] === 1 ? obs - 1 : obs, distance + 1])
         }
     }

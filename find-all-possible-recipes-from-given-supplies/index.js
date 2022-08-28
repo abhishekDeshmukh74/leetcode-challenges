@@ -23,7 +23,7 @@ var findAllRecipes = function (recipes, ingredients, supplies) {
     // BFS
     while (queue.length) {
         const currentRecipe = queue.shift()
-        if (!graph[currentRecipe]) continue
+        if (!graph[currentRecipe]) continue;
         for (const neighborRecipe of graph[currentRecipe]) {
             inDegrees[neighborRecipe]--
             if (inDegrees[neighborRecipe] === 0) {

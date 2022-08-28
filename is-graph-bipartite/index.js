@@ -5,7 +5,7 @@ var isBipartite = function (graph) {
 
     for (let i = 0; i < graph.length; i++) {
 
-        if (colors[i] !== -1) continue
+        if (colors[i] !== -1) continue;
 
         const queue = [[i, 0]]
 

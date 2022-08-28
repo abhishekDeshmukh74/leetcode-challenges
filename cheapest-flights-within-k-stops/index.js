@@ -7,7 +7,7 @@ var findCheapestPrice = function (n, flights, src, dst, k) {
         const tempPrices = [...prices]
 
         for (const [s, d, w] of flights) {
-            if (prices[s] === Infinity) continue
+            if (prices[s] === Infinity) continue;
             const currentPrice = prices[s] + w
             if (currentPrice < tempPrices[d]) tempPrices[d] = currentPrice
         }

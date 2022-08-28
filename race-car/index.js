@@ -8,7 +8,7 @@ var racecar = function (target) {
         let [moves, position, speed] = queue.shift();
         if (position === target) return moves
         const key = `${position}-${speed}`
-        if (visited.has(key)) continue
+        if (visited.has(key)) continue;
 
         visited.add(key)
         queue.push([moves + 1, position + speed, speed * 2])
