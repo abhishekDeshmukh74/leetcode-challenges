@@ -1,4 +1,11 @@
-var containsCycle = function (grid) {
+const directions = [
+    [0, 1],
+    [1, 0],
+    [0, -1],
+    [-1, 0],
+];
+
+const containsCycle = function (grid) {
     const visited = new Set();
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid[i].length; j++) {
@@ -9,28 +16,17 @@ var containsCycle = function (grid) {
 };
 
 const explore = (grid, i, j, visited) => {
-
     const queue = [[i, j, -1, -1]]
 
     while (queue.length) {
-
         const [x, y, parentX, parentY] = queue.shift();
         if (visited.has(`${x}-${y}`)) return true
         visited.add(`${x}-${y}`)
 
-        const directions = [
-            [0, 1],
-            [1, 0],
-            [0, -1],
-            [-1, 0],
-        ];
-
         for (const [dx, dy] of directions) {
             const newX = x + dx;
             const newY = y + dy;
-            const xInbounds = newX >= 0 && newX < grid.length;
-            const yInbounds = newY >= 0 && newY < grid[0].length;
-            if (!xInbounds || !yInbounds) continue;
+            if (newX < 0 || newY < 0 || newX >= grid.length || newY >= grid[0].length) continue;
             if (grid[newX][newY] !== grid[i][j]) continue;
             if (newX === parentX && newY === parentY) continue;
             if (visited.has(`${newX}-${newY}`)) continue
@@ -39,6 +35,7 @@ const explore = (grid, i, j, visited) => {
     }
     return false
 }
+
 console.log(containsCycle([
     ['a', 'a', 'a', 'a'],
     ['a', 'b', 'b', 'a'],
