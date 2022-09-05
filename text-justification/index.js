@@ -35,8 +35,8 @@ var fullJustify = function (words, maxWidth) {
         return justifiedText
     }
 
-    let result = []
     let currentLength = 0
+    let result = []
     let prevWords = []
     for (const word of words) {
         currentLength += word.length + 1
