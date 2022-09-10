@@ -1,245 +1,3 @@
-// // var duplicateZeros = function (arr) {
-// //   let deleted;
-// //   for (let i = 0; i < arr.length; i++) {
-// //     console.log('arr[i]:', arr[i]);
-// //     if (deleted) {
-// //       arr[i] = deleted;
-// //       deleted = null;
-// //       continue;
-// //     }
-// //     if (arr[i] === 0) {
-// //       deleted = arr[i + 1];
-// //       arr[i + 1] = 0;
-// //       i++;
-// //     }
-// //   }
-// //   return arr;
-// // };
-// // console.log(duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]));
-
-// // const outer = function () {
-
-// //     let count = 0;
-
-// //     return function () {
-// //         return count++
-// //     }
-// //     count = 1;
-// // }
-
-// // const exp = outer();
-// // console.log(exp());
-// // exp(); // 1
-// // exp(); // 2
-// // exp(); // 3
-
-// // let count = 0;
-// // (function immediate() {
-// //   let count = 1;
-// //   setTimeout(() => {
-// //     console.log(count); // What is logged?
-// //   }, 1000);
-// //   count = 2;
-// // })();
-
-// // const object = {
-// //   price: 10,
-// //   getPrice: function () {
-// //     return this.price;
-// //   }
-// // }
-
-// // const copy = Object.create(object);
-// // copy.price = 20;
-// // delete copy.price;
-// // console.log(copy.price);
-
-// // for (var i = 0; i < 5; i++) {
-// //   (function (x) {
-// //     setTimeout(function () {
-// //       console.log(x);
-// //     }, x * 1000);
-// //   })(i);
-// // }
-
-// // (function () {
-// //   console.log(1);
-// //   setTimeout(function () {
-// //     console.log(2);
-// //   }, 1000);
-// //   setTimeout(function () {
-// //     console.log(3);
-// //   }, 0);
-// //   console.log(4);
-// // })();
-
-// // console.log(a);
-
-// // var a = 5;
-
-// // function abc() {
-// //   a = 10;
-// //   console.log(a); // 10
-// // }
-
-// // abc();
-
-// // console.log(a);
-
-// // console.log(a); // undefined
-// // console.log(b); // Rede
-// // var a;
-// // let b;
-
-// // const myObject = {
-// //   price: 20.99,
-// //   get_price: function () {
-// //     return this.price;
-// //   },
-// // };
-// // const customObject = Object.create(myObject);
-// // customObject.price = 19.99;
-// // delete customObject.price;
-// // console.log(customObject.get_price());
-
-// // The time complexity is O(n/2 + n/3 + n/5 + n/7 + n/11 + ....) which is equivalent to O(n log log n)
-// // Space complexity is O(n)
-// // var duplicateZeros = function (arr) {
-// //   const queue = [];
-// //   for (let i = 0; i < arr.length; i++) {
-// //     if (arr[i] === 0) {
-// //       queue.push(0);
-// //       queue.push(0);
-// //     } else {
-// //       queue.push(arr[i]);
-// //     }
-// //     arr[i] = queue.shift();
-// //   }
-// // };
-
-// // console.log(duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]));
-
-// // var makesquare = function (matchsticks) {
-// //   const sum = matchsticks.reduce((a, c) => a + c);
-// //   if (sum % 4 !== 0) return false;
-// //   const sideLength = sum / 4;
-// //   const sides = Array(4).fill(0);
-
-// //   matchsticks.sort((x, y) => y - x);
-
-// //   const backTrack = (i) => {
-// //     if (i === matchsticks.length) return true;
-
-// //     for (let j = 0; j < 4; j++) {
-// //       if (sides[j] + matchsticks[i] <= sideLength) {
-// //         sides[j] += matchsticks[i];
-// //         if (backTrack(i + 1)) return true;
-// //         sides[j] -= matchsticks[i];
-// //       }
-// //     }
-// //     return false;
-// //   };
-// //   return backTrack(0);
-// // };
-
-// // console.log(makesquare([1, 1, 2, 2, 2]));
-
-
-
-// var networkDelayTime = function (times, n, k) {
-//   const graph = {};
-//   for (const [a, b, w] of times) {
-//     if (!graph[a]) graph[a] = [];
-//     if (!graph[b]) graph[b] = [];
-//     graph[a].push([b, w]);
-//     graph[b].push([a, w]);
-//   }
-
-//   console.log('graph:', graph);
-//   const queue = [[k, 0]];
-//   const visited = new Set();
-//   while (queue.length) {
-//     const [currentNode, distance] = queue.shift();
-//     if (visited.has(currentNode)) continue;
-//     visited.add(currentNode);
-
-//     for (const neighbor of graph[String(currentNode)]) {
-//       const [nNode, nDistance] = neighbor;
-//       queue.push([nNode, distance + nDistance]);
-//     }
-//   }
-// };
-// console.log(
-//   networkDelayTime(
-//     [
-//       [2, 1, 1],
-//       [2, 3, 1],
-//       [3, 4, 1],
-//     ],
-//     4,
-//     2
-//   )
-// );
-
-
-
-
-
-// const quickSort = (arr, left = 0, right = arr.length - 1) => {
-//   if (left >= right) return
-//   const partitionIndex = partition(arr, left, right)
-//   quickSort(arr, left, partitionIndex - 1)
-//   quickSort(arr, partitionIndex, right)
-//   return arr
-// }
-
-// const partition = (arr, left, right) => {
-//   const pivotIndex = Math.floor((left + right) / 2)
-//   const pivot = arr[pivotIndex]
-//   while (left <= right) {
-//     while (arr[left] < pivot) left++
-//     while (arr[right] > pivot) right--
-//     if (left <= right) {
-//       [arr[left], arr[right]] = [arr[right], arr[left]]
-//       left++
-//       right--
-//     }
-//   }
-//   return left
-// }
-// console.log(quickSort([2, 0, 2, 1, 1, 0]))
-
-// const union = (n1, n2) => {
-//     p1 = find(n1);
-//     p2 = find(n2);
-
-//     if (p1 === p2) return false
-
-//     if (rank[p1] > rank[p2]) {
-//         parent[p2] = p1;
-//         rank[p1] += rank[p2]
-//     } else {
-//         parent[p1] = p2;
-//         rank[p2] += rank[p1]
-//     }
-//     return true
-// }
-
-// for (const [n1, n2] of edges) if (!union(n1, n2)) return [n1, n2]
-
-
-
-// const trie = new Trie();
-// trie.insert('apple');
-// trie.search('apple');
-// trie.search('app');
-// trie.startsWith('app');
-// trie.insert('app');
-// trie.search('app');
-
-
-
-
 // var checkInclusion = function (s1, s2) {
 //   const map = {};
 //   for (let i = 0; i < s1.length; i++) map[s1[i]] ? map[s1[i]]++ : (map[s1[i]] = 1);
@@ -270,8 +28,6 @@
 
 
 // var updateMatrix = function (mat) {
-
-
 //     const result = []
 //     for (let i = 0; i < mat.length; i++) {
 //         result[i] = []
@@ -285,24 +41,7 @@
 // // console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
 // console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [1, 1, 1]]))
 
-function TreeNode(val, left, right) {
-    this.val = val === undefined ? 0 : val;
-    this.left = left === undefined ? null : left;
-    this.right = right === undefined ? null : right;
-}
 
-const root = new TreeNode(5);
-const node1 = new TreeNode(1);
-const node2 = new TreeNode(2);
-const node3 = new TreeNode(3);
-const node6 = new TreeNode(6);
-const node4 = new TreeNode(4);
-
-root.left = node1;
-root.right = node2;
-node1.left = node3;
-node2.left = node6;
-node2.right = node4;
 
 // var getDirections = function (root, startValue, destValue) {
 
@@ -361,85 +100,6 @@ node2.right = node4;
 // console.log(detectCycleInDirectedGraphIterativeDFS(cyclicDirectedGraph))
 
 
-// var shortestPath = function (grid, k) {
-
-//     const target = [grid.length - 1, grid[0].length - 1]
-
-//     const queue = [[0, 0, 0, k]]
-
-//     const directions = [
-//         [0, 1],
-//         [1, 0],
-//         [0, -1],
-//         [-1, 0],
-//     ];
-
-//     const visited = new Set();
-
-//     while (queue.length) {
-
-//         const [x, y, stepsTaken, obstaclesLeft] = queue.shift();
-
-//         for (const [dx, dy] of directions) {
-//             const newX = x + dx;
-//             const newY = y + dy;
-//             const xInbounds = newX >= 0 && newX < grid.length;
-//             const yInbounds = newY >= 0 && newY < grid[0].length;
-//             if (!xInbounds || !yInbounds) continue;
-
-//             const newObstaclesLeft = obstaclesLeft - grid[newY][newY]
-//             if (newObstaclesLeft <= 0) continue
-//             if (!visited.has(`${newX}${newY}${newObstaclesLeft}`)) continue
-
-//             visited.add(`${newX}${newY}${newObstaclesLeft}`)
-
-//             queue.push([newX, newY, stepsTaken + 1, newObstaclesLeft])
-//         }
-//     }
-//     return -1
-
-// };
-// console.log(shortestPath([
-//     [0, 0, 0],
-//     [1, 1, 0],
-//     [0, 0, 0],
-//     [0, 1, 1],
-//     [0, 0, 0]
-// ], 1))
-
-// Expand around center
-// var longestPalindrome = function (s) {
-
-//     const expandLeftAndRight = (left, right) => {
-//         while (left >= 0 && right < s.length && s[left] === s[right]) {
-//             left--
-//             right++
-//         }
-//         return right - left - 1
-//     }
-
-//     if (!s || s.length === 0) return ''
-//     let start = 0
-//     let end = 0
-
-//     for (let i = 0; i < s.length; i++) {
-//         const odd = expandLeftAndRight(i, i)
-//         const even = expandLeftAndRight(i, i + 1)
-//         const maxLength = Math.max(odd, even)
-//         if (maxLength > end - start) {
-//             start = i - (maxLength - 1) / 2
-//             end = i + maxLength / 2
-//         }
-//     }
-//     return s.slice(Math.ceil(start), end + 1)
-// }
-
-// console.log(longestPalindrome('babad'))
-// console.log(longestPalindrome('abacdfgdcaba'))
-// console.log(longestPalindrome('aacabdkacaa'))
-// console.log(longestPalindrome('cbbd'))
-
-
 // var amountPainted = function (paint) {
 //     const work = []
 //     const painted = new Set();
@@ -461,19 +121,423 @@ node2.right = node4;
 
 
 
-var maxProduct = function (nums) {
-    let maxProduct = [nums[0]]
-    let max = nums[0]
-    let min = nums[0]
+// var longestPalindrome = function (s) {
+//     const table = Array(s.length).fill().map(() => Array(s.length).fill(0))
 
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i] < 0) [max, min] = [min, max]
+//     for (let i = 0; i < s.length; i++) {
+//         table[i][i] = 1
+//     }
 
-        max = Math.max(nums[i], nums[i] * max)
-        min = Math.min(nums[i], nums[i] * min)
-        maxProduct = Math.max(max, maxProduct)
-    }
-    return maxProduct
-};
+//     for (let i = 0; i < s.length - 1; i++) {
+//         if (s[i] === s[i + 1]) {
+//             table[i][i + 1] = 2
+//         }
+//     }
 
-console.log(maxProduct([2, 3, -2, 4]));
+//     for (let length = 3; length <= s.length; length++) {
+//         for (let i = 0, j = i + length - 1; j < s.length; i++, j++) {
+//             if (table[i + 1][j - 1] && s[i] === s[j]) {
+//                 table[i][j] = table[i + 1][j - 1] + 1
+//             }
+//         }
+
+//     }
+
+//     console.table(table)
+
+// }
+
+// console.log(longestPalindrome('babad'))
+
+// var combinationSum2 = function (candidates, target) {
+//     const result = []
+//     const dfs = (i, current, currentTotal) => {
+//         if (i >= candidates.length || currentTotal > target) return
+//         if (currentTotal === target) {
+//             result.push([...current])
+//             return
+//         }
+
+//         current.push(candidates[i])
+//         dfs(i + 1, current, currentTotal + candidates[i])
+//         current.pop()
+//         dfs(i + 1, current, currentTotal)
+//     }
+//     dfs(0, [], 0)
+//     return result
+// };
+
+// console.log(combinationSum2([10, 1, 2, 7, 6, 1, 5], 8))
+
+
+// let shortestDistance = function (grid) {
+
+//     const bfs = (x, y, totalHouses) => {
+
+//     }
+
+//     for (let i = 0; i < grid.length; i++) {
+//         for (let j = 0; j < grid[i].length; j++) {
+//             if (grid[i][j] == 1) totalHouses++
+//         }
+//     }
+
+//     let minDistance = Number.MAX_VALUE;
+//     let totalHouses = 0;
+//     // Find the min distance sum for each empty cell.
+//     for (let i = 0; i < grid.length; i++) {
+//         for (let j = 0; j < grid[i].length; j++) {
+//             if (grid[i][j] == 0) {
+//                 minDistance = Math.min(minDistance, bfs(i, j, totalHouses));
+//             }
+//         }
+//     }
+
+//     // If it is impossible to reach all houses from any empty cell, then return -1.
+//     if (minDistance == Number.MAX_VALUE) return -1;
+
+//     return minDistance;
+// };
+
+// var longestCycle = function (edges) {
+//     const graph = {}
+//     for (const [index, edge] of edges.entries()) {
+//         if (!graph[index]) graph[index] = []
+//         if (edge === -1) continue;
+//         graph[index].push(edge)
+//     }
+
+//     const visited = new Set();
+//     const nodeDistance = []
+
+//     const dfs = (node, distance) => {
+//         if (visited.has(String(node))) {
+//             return distance - nodeDistance[node]
+//         }
+
+//         visited.add(String(node))
+//         nodeDistance[node] = distance
+//         if (!graph[node]) return 0
+
+//         for (const neighbor of graph[node]) {
+//             const result = dfs(neighbor, distance + 1)
+//             if (result) return result
+//         }
+//         visited.delete(String(node))
+//         return 0
+//     }
+
+//     let max = 0;
+//     for (const node in graph) {
+//         if (!visited.has(node)) {
+//             max = Math.max(max, dfs(node, 0))
+//         }
+//     }
+//     return max === 0 ? -1 : max
+// };
+
+// console.log(longestCycle([3, 3, 4, 2, 3]))
+// console.log(longestCycle([3, 3, 4, 2, 3]))
+
+// class PseudoMinHeap {
+//     constructor() {
+//         this.nodes = [];
+//     }
+
+//     findIndex(node) {
+//         for (let i = 0; i < this.nodes.length; i += 1) {
+//             if (this.nodes[i].node === node) {
+//                 return i;
+//             }
+//         }
+
+//         return -1;
+//     }
+
+//     add(node, weight) {
+//         const index = this.findIndex(node);
+//         if (index !== -1) {
+//             if (this.nodes[index].weight < weight) {
+//                 return;
+//             }
+
+//             this.nodes.splice(index, 1);
+//         }
+
+//         let low = 0;
+//         let high = this.nodes.length - 1;
+//         while (low <= high) {
+//             const mid = low + Math.floor((high - low) / 2);
+//             const weightMid = this.nodes[mid].weight;
+//             if (weightMid < weight) {
+//                 high = mid - 1;
+//             } else {
+//                 low = mid + 1;
+//             }
+//         }
+
+//         this.nodes.splice(low, 0, { node, weight });
+//     }
+
+//     poll() {
+//         return this.nodes.pop();
+//     }
+// }
+
+// var minCostConnectPoints = function (points) {
+
+//     const graph = {}
+//     for (let i = 0; i < points.length; i++) {
+//         [x1, y1] = points[i]
+//         for (let j = i + 1; j < points.length; j++) {
+//             [x2, y2] = points[j]
+//             const distance = Math.abs(x2 - x1) + Math.abs(y2 - y1)
+//             if (!graph[i]) graph[i] = []
+//             if (!graph[j]) graph[j] = []
+//             graph[i].push([j, distance])
+//             graph[j].push([i, distance])
+//         }
+//     }
+
+//     // Prim's algorithm
+//     let minSum = 0
+//     const visited = new Set()
+//     const minHeap = new PseudoMinHeap()
+//     minHeap.add(0, 0)
+
+//     while (visited.size < points.length) {
+
+//         const { node: currentNode, weight: distance } = minHeap.poll();
+
+//         if (visited.has(currentNode)) continue
+//         visited.add(currentNode)
+//         minSum += distance
+//         if (!graph[String(currentNode)]) continue;
+
+//         for (const [nNode, nDistance] of graph[String(currentNode)]) {
+//             if (!visited.has(nNode)) {
+//                 minHeap.add(nNode, nDistance)
+//             }
+//         }
+//     }
+//     return minSum
+// };
+
+// console.log(minCostConnectPoints([[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]]))
+
+
+// var rob = function (nums) {
+
+//     const robHelper = (slicedNums) => {
+//         if (slicedNums.length === 0) return 0;
+//         if (slicedNums.length === 1) return slicedNums[0];
+//         if (slicedNums.length === 2) return Math.max(slicedNums[0], slicedNums[1]);
+
+//         const table = [slicedNums[0], Math.max(slicedNums[0], slicedNums[1])];
+
+//         for (let i = 2; i < slicedNums.length; i++) {
+//             table[i] = Math.max(slicedNums[i] + table[i - 2], table[i - 1]);
+//         }
+//         return table[slicedNums.length - 1]
+//     }
+
+//     return Math.max(robHelper(nums.slice(1)), robHelper(nums.slice(0, nums.length - 1)))
+// };
+
+
+// console.log(rob([2, 3, 2])) // 3
+// console.log(rob([1, 2, 1, 1])) // 3
+// console.log(rob([1, 2, 3, 1])) // 4
+// console.log(rob([1, 2, 3])) // 3
+// console.log(rob([0])) // 0
+
+// function TreeNode(val, left, right) {
+//     this.val = val === undefined ? 0 : val;
+//     this.left = left === undefined ? null : left;
+//     this.right = right === undefined ? null : right;
+// }
+
+// const root = new TreeNode(3);
+// const node2 = new TreeNode(2);
+// const node3 = new TreeNode(3);
+// const node3_2 = new TreeNode(3);
+// const node1 = new TreeNode(1);
+// root.left = node2;
+// root.right = node3;
+// node2.right = node3_2;
+// node3.right = node1;
+
+// var rob = function (root) {
+//     if (!root) return [];
+//     const queue = [root];
+//     const table = []
+//     while (queue.length) {
+//         let currentLevelSum = 0;
+//         const currentLevelQueueLength = queue.length;
+//         for (let i = 0; i < currentLevelQueueLength; i++) {
+//             const current = queue.shift()
+//             if (current) {
+//                 currentLevelSum += current.val
+//                 queue.push(current.left)
+//                 queue.push(current.right)
+//             }
+//         }
+//         const currentTableLength = table.length
+//         if (currentTableLength === 0) table.push(currentLevelSum)
+//         if (currentTableLength === 1) table.push(Math.max(currentLevelSum, table[0]))
+//         if (currentTableLength >= 2) table.push(Math.max(currentLevelSum + table[currentTableLength - 2], table[currentTableLength - 1]))
+//     }
+//     return table.pop();
+// };
+
+// console.log(rob(root))
+
+// var search = function (nums, target) {
+
+
+
+// }
+
+// console.log(search([4, 5, 6, 7, 0, 1, 2], 0))
+
+// var search = function (nums, target) {
+//     let left = 0;
+//     let right = nums.length - 1;
+
+//     while (left <= right) {
+//         let mid = Math.floor(left + (right - left) / 2)
+//         if (nums[mid] === target) return mid
+//         console.log('nums[mid]:', nums[mid])
+//         nums[mid] < nums[right] ? right = mid - 1 : left = mid + 1
+//     }
+//     return -1
+// }
+
+// console.log(search([1, 3], 3))
+
+
+
+
+
+// var cherryPickup = function (grid) {
+
+//     if (grid[0][0] === -1) return 0
+
+
+
+// }
+
+// console.log(cherryPickup([
+//     [0, 1, -1],
+//     [1, 0, -1],
+//     [1, 1, 1]
+// ]))
+
+
+// var minOperations = function (nums, x) {
+
+//     const memo = {}
+
+//     const dfs = (left, right, currentX, count) => {
+//         if (currentX === 0) return count
+//         if (left > right || currentX < 0) return Infinity
+//         let key = `${left}-${right}-${currentX}`
+//         if (key in memo) return memo[key]
+
+//         const leftResult = dfs(left + 1, right, currentX - nums[left], count + 1)
+//         const rightResult = dfs(left, right - 1, currentX - nums[right], count + 1)
+//         memo[key] = Math.min(leftResult, rightResult)
+//         return memo[key]
+//     }
+
+//     const result = dfs(0, nums.length - 1, x, 0)
+//     return result === Infinity ? -1 : memo[`0-${nums.length - 1}-${x}`]
+// }
+
+
+// console.log(minOperations([1, 1, 4, 2, 3], 5))
+// console.log(minOperations(
+//     [8828, 9581, 49, 9818, 9974, 9869, 9991, 10000, 10000, 10000, 9999, 9993, 9904, 8819, 1231, 6309], 134365))
+
+// var duplicateZeros = function (arr) {
+//   let deleted;
+//   for (let i = 0; i < arr.length; i++) {
+//     console.log('arr[i]:', arr[i]);
+//     if (deleted) {
+//       arr[i] = deleted;
+//       deleted = null;
+//       continue;
+//     }
+//     if (arr[i] === 0) {
+//       deleted = arr[i + 1];
+//       arr[i + 1] = 0;
+//       i++;
+//     }
+//   }
+//   return arr;
+// };
+// console.log(duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]));
+
+// The time complexity is O(n/2 + n/3 + n/5 + n/7 + n/11 + ....) which is equivalent to O(n log log n)
+// Space complexity is O(n)
+// var duplicateZeros = function (arr) {
+//   const queue = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === 0) {
+//       queue.push(0);
+//       queue.push(0);
+//     } else {
+//       queue.push(arr[i]);
+//     }
+//     arr[i] = queue.shift();
+//   }
+// };
+
+// console.log(duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]));
+
+// var shortestBridge = function (grid) {
+
+// };
+
+// console.log(shortestBridge([[0, 1], [1, 0]]))
+// console.log(shortestBridge([[0, 1, 0], [0, 0, 0], [0, 0, 1]]))
+// console.log(shortestBridge([[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]]))
+
+// function TreeNode(val, left, right) {
+//     this.val = val === undefined ? 0 : val;
+//     this.left = left === undefined ? null : left;
+//     this.right = right === undefined ? null : right;
+// }
+
+// const root = new TreeNode(1);
+// const node3_1 = new TreeNode(3);
+// const node2 = new TreeNode(2);
+// const node5 = new TreeNode(5);
+// const node3_2 = new TreeNode(3);
+// const node9 = new TreeNode(9);
+// root.left = node3_1;
+// root.right = node2;
+// node3_1.left = node5;
+// node3_1.right = node3_2;
+// node2.right = node9;
+
+// var widthOfBinaryTree = function(root) {
+//     if (root == null) return 0
+//     let max = 0
+//     let queue = [[root, 0]]
+//     while (queue.length){
+//         let size = queue.length
+//         let currentLevel = []
+//         for (let i = 0; i < size; i++){
+//             let [current, position] = queue.shift()
+//             currentLevel.push(position)
+//             current.left && queue.push([current.left, position * 2])
+//             current.right && queue.push([current.right, position * 2 + 1])
+//         }
+//         let currLevelWidth = currentLevel.length === 1 ? 1 : currentLevel[currentLevel.length - 1] - currentLevel[0] + 1
+//         max = Math.max(max, currLevelWidth)
+//     }
+//     return max
+// }
+
+// console.log(widthOfBinaryTree(root))
