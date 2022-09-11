@@ -17,3 +17,6 @@ var isIsomorphic = function (s, t) {
     }
     return true
 };
+
+console.log(isIsomorphic('foo', 'bar'))
+console.log(isIsomorphic('paper', 'title'))
