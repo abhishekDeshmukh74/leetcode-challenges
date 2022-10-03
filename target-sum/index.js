@@ -6,8 +6,7 @@ var findTargetSumWays = function (nums, target) {
     const memo = {}
     const dfs = (i, total) => {
         if (i === nums.length) {
-            if (total === target) return 1
-            return 0
+            return (total === target) ? 1 : 0
         }
         const key = `${i},${total}`
         if (key in memo) return memo[key]
