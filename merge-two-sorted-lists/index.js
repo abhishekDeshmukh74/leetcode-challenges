@@ -1,19 +1,19 @@
 function ListNode(val, next) {
-  this.val = val === undefined ? 0 : val;
+  this.val = val === undefined ? 0 : val
   this.next = next === undefined ? null : next;
 }
 
-const node11 = new ListNode(1);
-const node12 = new ListNode(2);
-const node14 = new ListNode(4);
-node11.next = node12;
-node12.next = node14;
+const node11 = new ListNode(1)
+const node12 = new ListNode(2)
+const node14 = new ListNode(4)
+node11.next = node12
+node12.next = node14
 
-const node21 = new ListNode(1);
-const node23 = new ListNode(3);
-const node24 = new ListNode(4);
-node21.next = node23;
-node23.next = node24;
+const node21 = new ListNode(1)
+const node23 = new ListNode(3)
+const node24 = new ListNode(4)
+node21.next = node23
+node23.next = node24
 
 var mergeTwoLists = function (list1, list2) {
   const dummyNode = new ListNode();

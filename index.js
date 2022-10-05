@@ -352,16 +352,16 @@
 // console.log(rob([0])) // 0
 
 // function TreeNode(val, left, right) {
-//     this.val = val === undefined ? 0 : val;
-//     this.left = left === undefined ? null : left;
-//     this.right = right === undefined ? null : right;
+//     this.val = val === undefined ? 0 : val
+//     this.left = left === undefined ? null : left
+//     this.right = right === undefined ? null : right
 // }
 
 // const root = new TreeNode(3);
 // const node2 = new TreeNode(2);
 // const node3 = new TreeNode(3);
 // const node3_2 = new TreeNode(3);
-// const node1 = new TreeNode(1);
+// const node1 = new TreeNode(1)
 // root.left = node2;
 // root.right = node3;
 // node2.right = node3_2;
@@ -504,12 +504,12 @@
 // console.log(shortestBridge([[1, 1, 1, 1, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 1, 1, 1, 1]]))
 
 // function TreeNode(val, left, right) {
-//     this.val = val === undefined ? 0 : val;
-//     this.left = left === undefined ? null : left;
-//     this.right = right === undefined ? null : right;
+//     this.val = val === undefined ? 0 : val
+//     this.left = left === undefined ? null : left
+//     this.right = right === undefined ? null : right
 // }
 
-// const root = new TreeNode(1);
+// const root = new TreeNode(1)
 // const node3_1 = new TreeNode(3);
 // const node2 = new TreeNode(2);
 // const node5 = new TreeNode(5);
@@ -541,3 +541,75 @@
 // }
 
 // console.log(widthOfBinaryTree(root))
+
+
+// var largestRectangleArea = function (heights) {
+
+
+
+
+
+//     let maxArea = 0
+//     for (const [index, height] of heights.entries()) {
+//     }
+//     return maxArea
+// };
+
+// console.log(largestRectangleArea([2, 1, 5, 6, 2, 3]))
+
+// Prerequisites => basic understanding of recursive functions
+
+// types of problems in backtracking –
+
+// Decision Problem – search for a feasible solution
+// Optimization Problem – search for the best solution
+// Counting Problem – find all feasible solutions
+
+// N-queen, Matchsticks to Square,
+
+// Identify states
+// => valid states
+// => invalid states
+// => track the states(variables, set, map, array)* [mutate input, new mechanism]
+
+// call backtracking function on the starting state
+
+// defining backtracking function
+
+// base cases
+
+// success case(out of boundary) => process result
+
+// invalid case => don't explore
+
+
+// all the valid combinations
+
+// update all the states in state track
+
+// call the backtrack function on next
+
+// reset all the updated states
+
+// return result
+
+function TreeNode(val, left, right) {
+    this.val = val === undefined ? 0 : val
+    this.left = left === undefined ? null : left
+    this.right = right === undefined ? null : right
+}
+
+const root = new TreeNode(1)
+const node2 = new TreeNode(2)
+const node3 = new TreeNode(3)
+const node4 = new TreeNode(4)
+
+root.left = node2
+root.right = node3
+node3.right = node4
+
+var getLonelyNodes = function (root) {
+
+};
+
+console.log(getLonelyNodes())

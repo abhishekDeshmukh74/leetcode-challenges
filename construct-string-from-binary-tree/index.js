@@ -1,10 +1,10 @@
 function TreeNode(val, left, right) {
-    this.val = val === undefined ? 0 : val;
-    this.left = left === undefined ? null : left;
-    this.right = right === undefined ? null : right;
+    this.val = val === undefined ? 0 : val
+    this.left = left === undefined ? null : left
+    this.right = right === undefined ? null : right
 }
 
-const root = new TreeNode(1);
+const root = new TreeNode(1)
 const node2 = new TreeNode(2);
 const node3 = new TreeNode(3);
 const node4 = new TreeNode(4);
