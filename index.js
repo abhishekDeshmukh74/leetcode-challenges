@@ -592,24 +592,3 @@
 // reset all the updated states
 
 // return result
-
-function TreeNode(val, left, right) {
-    this.val = val === undefined ? 0 : val
-    this.left = left === undefined ? null : left
-    this.right = right === undefined ? null : right
-}
-
-const root = new TreeNode(1)
-const node2 = new TreeNode(2)
-const node3 = new TreeNode(3)
-const node4 = new TreeNode(4)
-
-root.left = node2
-root.right = node3
-node3.right = node4
-
-var getLonelyNodes = function (root) {
-
-};
-
-console.log(getLonelyNodes())
