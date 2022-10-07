@@ -1,30 +1,3 @@
-// var checkInclusion = function (s1, s2) {
-//   const map = {};
-//   for (let i = 0; i < s1.length; i++) map[s1[i]] ? map[s1[i]]++ : (map[s1[i]] = 1);
-
-//   var isAnagram = function (s, t) {
-//     if (s.length !== t.length) return false;
-
-//     let mapS = {};
-//     let mapT = {};
-//     for (let i = 0; i < s; i++) mapS[s[i]] ? mapS[s[i]]++ : (mapS[s[i]] = 1);
-//     for (let i = 0; i < t; i++) mapT[s[t]] ? mapT[s[t]]++ : (mapT[s[t]] = 1);
-
-//     for (const key in mapS) {
-//       if (mapS[key] !== mapT[key]) return false;
-//     }
-//     return true;
-//   };
-
-//   for (let i = 0; i < s2.length; i++) {
-//     if (map[s2[i]]) {
-//       if (isAnagram(s2.slice(i, i + s1.length), s1)) return true;
-//     }
-//   }
-//   return false;
-// };
-// console.log(checkInclusion('ab', 'eidbaooo'));
-// console.log(checkInclusion('ab', 'eidboaoo'));
 
 
 // var updateMatrix = function (mat) {
@@ -592,3 +565,5 @@
 // reset all the updated states
 
 // return result
+
+
