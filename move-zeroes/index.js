@@ -1,16 +1,14 @@
 var moveZeroes = function (nums) {
-  let left = 0;
-  let right = 0;
+  let left = 0
+  let right = 0
   while (right < nums.length) {
     if (nums[right]) {
-      let temp = nums[left];
-      nums[left] = nums[right];
-      nums[right] = temp;
-      left++;
+      [nums[left], nums[right]] = [nums[right], nums[left]]
+      left++
     }
-    right++;
+    right++
   }
-  return nums;
-};
+  return nums
+}
 
 console.log(moveZeroes([0, 1, 0, 3, 12]));

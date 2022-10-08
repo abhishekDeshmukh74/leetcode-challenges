@@ -3,9 +3,7 @@ var rotate = function (nums, k) {
   k = k % nums.length;
   const reverseArr = (left, right) => {
     while (left < right) {
-      const temp = nums[left];
-      nums[left] = nums[right];
-      nums[right] = temp;
+      [nums[left], nums[right]] = [nums[right], nums[left]]
       left++;
       right--;
     }

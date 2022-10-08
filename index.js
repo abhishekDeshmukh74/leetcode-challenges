@@ -1,21 +1,3 @@
-
-
-// var updateMatrix = function (mat) {
-//     const result = []
-//     for (let i = 0; i < mat.length; i++) {
-//         result[i] = []
-//         for (let j = 0; j < mat[i].length; j++) {
-//             result[i][j] = bfs(i, j, 0)
-//         }
-//     }
-//     return result
-// };
-
-// // console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
-// console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [1, 1, 1]]))
-
-
-
 // var getDirections = function (root, startValue, destValue) {
 
 //     const graph = {}
@@ -566,4 +548,16 @@
 
 // return result
 
+var updateMatrix = function (mat) {
+    const result = []
+    for (let i = 0; i < mat.length; i++) {
+        result[i] = []
+        for (let j = 0; j < mat[i].length; j++) {
+            result[i][j] = bfs(i, j, 0)
+        }
+    }
+    return result
+};
 
+// console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
+console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [1, 1, 1]]))
