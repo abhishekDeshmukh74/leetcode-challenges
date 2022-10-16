@@ -11,7 +11,7 @@ var minCut = function (s) {
 
     const memo = {}
     const dfs = (i, j) => {
-        // case "" && 'a'
+        // case '' && 'a'
         if (j <= i) return 0
         const key = `${i}-${j}`
         if (isPalindrome(i, j)) return 0

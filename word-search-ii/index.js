@@ -57,6 +57,6 @@ var findWords = function (board, words) {
 };
 
 console.log(findWords([
-    ["o", "a", "a", "n"], ["e", "t", "a", "e"], ["i", "h", "k", "r"], ["i", "f", "l", "v"]],
-    ["oath", "pea", "eat", "rain"
+    ['o', 'a', 'a', 'n'], ['e', 't', 'a', 'e'], ['i', 'h', 'k', 'r'], ['i', 'f', 'l', 'v']],
+    ['oath', 'pea', 'eat', 'rain'
     ]))
