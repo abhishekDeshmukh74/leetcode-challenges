@@ -1,3 +1,4 @@
+// TODO: Optimize
 var lengthOfLongestSubstring = function (s) {
   const set = new Set();
 

@@ -14,7 +14,7 @@ var climbStairs = function (n) {
 
 // Tabular solution
 var climbStairs = function (n) {
-  ways = [1, 2];
+  const ways = [1, 2];
   for (let i = 2; i < n; i++) {
     ways[i] = ways[i - 1] + ways[i - 2];
   }
