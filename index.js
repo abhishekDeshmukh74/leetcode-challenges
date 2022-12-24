@@ -499,11 +499,6 @@
 
 
 // var largestRectangleArea = function (heights) {
-
-
-
-
-
 //     let maxArea = 0
 //     for (const [index, height] of heights.entries()) {
 //     }
@@ -512,52 +507,59 @@
 
 // console.log(largestRectangleArea([2, 1, 5, 6, 2, 3]))
 
-// Prerequisites => basic understanding of recursive functions
-
-// types of problems in backtracking –
-
-// Decision Problem – search for a feasible solution
-// Optimization Problem – search for the best solution
-// Counting Problem – find all feasible solutions
-
-// N-queen, Matchsticks to Square,
-
-// Identify states
-// => valid states
-// => invalid states
-// => track the states(variables, set, map, array)* [mutate input, new mechanism]
-
-// call backtracking function on the starting state
-
-// defining backtracking function
-
-// base cases
-
-// success case(out of boundary) => process result
-
-// invalid case => don't explore
-
-
-// all the valid combinations
-
-// update all the states in state track
-
-// call the backtrack function on next
-
-// reset all the updated states
-
-// return result
-
-var updateMatrix = function (mat) {
-    const result = []
-    for (let i = 0; i < mat.length; i++) {
-        result[i] = []
-        for (let j = 0; j < mat[i].length; j++) {
-            result[i][j] = bfs(i, j, 0)
-        }
-    }
-    return result
-};
+// var updateMatrix = function (mat) {
+//     const result = []
+//     for (let i = 0; i < mat.length; i++) {
+//         result[i] = []
+//         for (let j = 0; j < mat[i].length; j++) {
+//             result[i][j] = bfs(i, j, 0)
+//         }
+//     }
+//     return result
+// };
 
 // console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
-console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [1, 1, 1]]))
+// console.log(updateMatrix([[0, 0, 0], [0, 1, 0], [1, 1, 1]]))
+
+// var letterCasePermutation = function (S) {
+//     let result = [];
+//     dfs("", 0);
+
+//     function dfs(current, i) {
+//         if (current.length == S.length) {
+//             result.push(current);
+//             return;
+//         }
+//         if (S.charAt(i) >= '0' && S.charAt(i) <= '9') {
+//             current += S.charAt(i);
+//             dfs(current, i + 1);
+//         } else {
+//             dfs(current + S.charAt(i).toLowerCase(), i + 1);
+//             dfs(current + S.charAt(i).toUpperCase(), i + 1);
+//         }
+//     }
+
+//     return result;
+// };
+
+// var eraseOverlapIntervals = function(intervals) {
+//     intervals.sort((a, b) => a[0] - b[0])
+//     let count = 0
+//     let lastEnd = 0
+
+//     console.log('intervals:', intervals)
+//     for (let i = 0; i < intervals.length; i++) {
+//         const [start, end] = intervals[i]
+
+//         if (lastEnd <= end) {
+//             lastEnd = end
+//         } else {
+//             count++
+//         }
+//     }
+//     return count
+// };
+
+// console.log(eraseOverlapIntervals([[1, 2], [2, 3], [3, 4], [1, 3]]))
+// console.log(eraseOverlapIntervals([[1, 2], [1, 2], [1, 2]]))
+// console.log(eraseOverlapIntervals([[1, 2], [2, 3]]))
