@@ -1,6 +1,6 @@
 const {
     MaxPriorityQueue,
-} = require('@datastructures-js/priority-queue');
+} = require('@datastructures-js/priority-queue')
 
 var kClosest = function (points, k) {
 
