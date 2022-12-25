@@ -1,4 +1,4 @@
-// for odd num i => no of 1s(i) = 1 + no of 1s(i/2) and for even num i=> no of 1s(i) = no of 1s(i/2)
+// for odd i => no of 1s(i) = 1 + no of 1s(i/2) and for even i => no of 1s(i) = no of 1s(i/2)
 var countBits = function (n) {
     const table = [0]
     for (let i = 1; i <= n; i++) {
