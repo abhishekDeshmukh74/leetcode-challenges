@@ -11,8 +11,7 @@ var topKFrequent = function (words, k) {
             // if count is the same, compare string(length and alphabetic order)
             if (map[w1] === map[w2]) {
                 if (w1 === w2) return 0
-                if (w1 < w2) return 1
-                return -1
+                return w1 < w2 ? 1 : -1
             }
             return map[w1] < map[w2] ? -1 : 1
         }
