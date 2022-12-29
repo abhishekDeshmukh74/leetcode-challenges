@@ -1,11 +1,10 @@
-// Map => O(n)
 var containsDuplicate = function (nums) {
-  const map = new Map();
+  const set = new Set()
   for (let i = 0; i < nums.length; i++) {
-    if (map.has(nums[i])) return true;
-    map.set(nums[i]);
+    if (set.has(nums[i])) return true
+    set.add(nums[i])
   }
-  return false;
-};
+  return false
+}
 
-console.log(containsDuplicate([1, 2, 3, 1]));
+console.log(containsDuplicate([1, 2, 3, 1]))
