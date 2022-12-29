@@ -20,7 +20,7 @@ var frequencySort = function (s) {
 var frequencySort = function (s) {
     const map = new Map()
     const bucket = []
-    let output = ''
+    let output = []
 
     for (let c of s) map.set(c, (map.get(c) || 0) + 1)
 
@@ -31,9 +31,9 @@ var frequencySort = function (s) {
 
     for (let i = bucket.length - 1; i >= 0; i--) {
         if (!bucket[i]) continue;
-        for (let char of bucket[i]) output += char.repeat(i)
+        for (let char of bucket[i]) output.push(char.repeat(i))
     }
-    return output
+    return output.join('')
 }
 
 console.log(frequencySort('tree'))
