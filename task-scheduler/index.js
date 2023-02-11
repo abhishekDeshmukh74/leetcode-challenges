@@ -8,7 +8,7 @@ var leastInterval = function (tasks, n) {
   for (const key in map) maxHeap.enqueue(map[key]);
 
   let time = 0;
-  const queue = []; // [frequency, idleTime]
+  const queue = []; // [frequency, timeToProcess]
 
   while (maxHeap.size() || queue.length) {
     time++;
