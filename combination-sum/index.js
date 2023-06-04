@@ -1,4 +1,4 @@
-// Let N be the number of candidates, T be the target value, and MM be the minimal value among the candidates.
+// Let N be the number of candidates, T be the target value, and M be the minimal value among the candidates.
 
 // Time Complexity: O(N^T/M +1)
 // As we illustrated before, the execution of the backtracking is unfolded as a DFS traversal in a n - ary tree.The total number of steps during the backtracking would be the number of nodes in the tree.
