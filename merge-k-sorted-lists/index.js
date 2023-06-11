@@ -19,7 +19,7 @@ const head3 = new ListNode(2);
 const node36 = new ListNode(6);
 head3.next = node36;
 
-const { MinPriorityQueue } = require("@datastructures-js/priority-queue");
+const { MinPriorityQueue } = require('@datastructures-js/priority-queue');
 
 var mergeKLists = function (lists) {
   const dummy = new ListNode(0);

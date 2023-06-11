@@ -50,7 +50,7 @@ var alienOrder = function (words) {
     return output
 };
 
-console.log(alienOrder(["wrt", "wrf", "er", "ett", "rftt"]))
-console.log(alienOrder(["z", "x"]))
-console.log(alienOrder(["z", "x", "z"]))
-console.log(alienOrder(["z", "x", "a", "zb", "zx"]))
+console.log(alienOrder(['wrt', 'wrf', 'er', 'ett', 'rftt']))
+console.log(alienOrder(['z', 'x']))
+console.log(alienOrder(['z', 'x', 'z']))
+console.log(alienOrder(['z', 'x', 'a', 'zb', 'zx']))

@@ -1,4 +1,4 @@
-// Due to the constrain of "algorithm runs in O(n) time and without using the division operation" logic is tricky. Use prefix and postfix array to calculate products. Product of i = prefix[i - 1] * postfix[i + 1] and handle edge cases where prefix value should be 1
+// Due to the constrain of 'algorithm runs in O(n) time and without using the division operation' logic is tricky. Use prefix and postfix array to calculate products. Product of i = prefix[i - 1] * postfix[i + 1] and handle edge cases where prefix value should be 1
 
 // With Prefix and postfix arr => O(n) for time and space + not using division operator
 var productExceptSelf = function (nums) {

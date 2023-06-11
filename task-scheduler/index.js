@@ -1,4 +1,4 @@
-const { MaxPriorityQueue } = require("@datastructures-js/priority-queue");
+const { MaxPriorityQueue } = require('@datastructures-js/priority-queue');
 
 var leastInterval = function (tasks, n) {
   const map = {};
@@ -25,8 +25,8 @@ var leastInterval = function (tasks, n) {
   return time;
 };
 
-console.log(leastInterval(["A", "A", "A", "B", "B", "B"], 2));
-console.log(leastInterval(["A", "A", "A", "B", "B", "B"], 0));
+console.log(leastInterval(['A', 'A', 'A', 'B', 'B', 'B'], 2));
+console.log(leastInterval(['A', 'A', 'A', 'B', 'B', 'B'], 0));
 console.log(
-  leastInterval(["A", "A", "A", "A", "A", "A", "B", "C", "D", "E", "F", "G"], 2)
+  leastInterval(['A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'], 2)
 );

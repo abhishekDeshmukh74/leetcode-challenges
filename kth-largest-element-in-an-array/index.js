@@ -1,4 +1,4 @@
-const { MinPriorityQueue } = require("@datastructures-js/priority-queue")
+const { MinPriorityQueue } = require('@datastructures-js/priority-queue')
 
 // Heap
 // Time complexity: O(Nlogk)

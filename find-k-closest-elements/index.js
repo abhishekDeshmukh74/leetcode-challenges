@@ -1,4 +1,4 @@
-const { MaxPriorityQueue } = require("@datastructures-js/priority-queue");
+const { MaxPriorityQueue } = require('@datastructures-js/priority-queue');
 
 // Heap
 var findClosestElements = function (arr, k, x) {
