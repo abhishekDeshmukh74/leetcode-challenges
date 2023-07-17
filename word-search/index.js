@@ -3,7 +3,7 @@
 // Space Complexity: O(L) where L is the length of the word to be matched. The main consumption of the memory lies in the recursion call of the backtracking function. The maximum length of the call stack would be the length of the word.Therefore, the space complexity of the algorithm is O(L)
 
 // Follow-up? Could you use search pruning to make your solution faster with a larger board?
-// If the length of the "word" is greater than the size of the "board"(#rows * #cols) we can simply return False.Also, we can check if each character in "word" exists in "board", if there is at least one character that does not exist in "board" we can simply return False. Performing these two prunings we can return False immediately instead of computing further.
+// If the length of the 'word' is greater than the size of the 'board'(#rows * #cols) we can simply return False.Also, we can check if each character in 'word' exists in 'board', if there is at least one character that does not exist in 'board' we can simply return False. Performing these two prunings we can return False immediately instead of computing further.
 
 var exist = function (board, word) {
 
