@@ -4,7 +4,7 @@
 // In the worst case where there is no overlapping calculation, the maximum number of entries in the memo would be m⋅n.For each entry, overall we could consider that it takes constant time, i.e.each invocation of dfs() at most emits one entry in the memo
 
 // Space Complexity: O(m⋅n)
-// The overall computation is proportional to the number of entries in memo.Hence, the overall time complexity is O(m⋅n). We are using a 2 dimensional array memo of size m⋅n and O(n) space to store the recursive call stack.This gives us the space complexity as O(n) +O(m⋅n) = O(m⋅n)
+// The overall computation is proportional to the number of entries in memo. Hence, the overall time complexity is O(m⋅n). We are using a 2 dimensional array memo of size m⋅n and O(n) space to store the recursive call stack.This gives us the space complexity as O(n) + O(m⋅n) = O(m⋅n)
 
 // Top Down Recursive - Memoization
 var canPartition = function (nums) {
