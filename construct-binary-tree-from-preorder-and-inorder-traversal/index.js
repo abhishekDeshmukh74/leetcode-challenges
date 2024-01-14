@@ -15,14 +15,22 @@ node20.left = node15;
 node20.right = node7;
 
 var buildTree = function (preOrder, inOrder) {
-  if (!preOrder?.length || !inOrder?.length) return null;
-  const root = new TreeNode(preOrder[0]);
-  const middle = inOrder.indexOf(preOrder[0]);
+  const map = new Map()
+  inOrder.forEach((element, index) => map.set(element, index));
 
-  root.left = buildTree(preOrder.slice(1, middle + 1), inOrder.slice(0, middle));
-  root.right = buildTree(preOrder.slice(middle + 1), inOrder.slice(middle + 1));
+  const getTree = (pStart = 0, pEnd = preOrder.length - 1, iStart = 0, iEnd = inOrder.length - 1) => {
+    if (pStart > pEnd || iStart > iEnd) return null
 
-  return root;
+    const root = new TreeNode(preOrder[pStart]);
+    const rootIndex = map.get(preOrder[pStart]);
+    const numsLeft = rootIndex - iStart
+
+    root.left = getTree(pStart + 1, pStart + numsLeft, iStart, iStart + rootIndex - 1);
+    root.right = getTree(pStart + numsLeft + 1, pEnd, rootIndex + 1, iEnd);
+    return root;
+  }
+
+  return getTree(0, preOrder.length - 1, 0, inOrder.length - 1)
 };
 
 console.log(buildTree([3, 9, 20, 15, 7], [9, 3, 15, 20, 7]));
