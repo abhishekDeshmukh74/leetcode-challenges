@@ -21,7 +21,6 @@ var isRobotBounded = function (instructions) {
             const [dx, dy] = travel[currentDirection]
             currentXPosition = currentXPosition + dx
             currentYPosition = currentYPosition + dy
-            console.log(`${currentXPosition}:${currentYPosition}`)
         }
     }
     return (currentXPosition === 0 && currentYPosition === 0) || currentDirection !== 'N'
