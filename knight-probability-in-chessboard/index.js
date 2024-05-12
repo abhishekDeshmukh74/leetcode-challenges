@@ -18,4 +18,6 @@ const knightProbability = function (n, k, row, column, visited = new Map()) {
   return a + b + c + d + e + f + g + h;
 };
 
+// TODO solve via DP and BFS
+
 console.log(knightProbability(3, 2, 0, 0));
