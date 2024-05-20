@@ -4,11 +4,7 @@ var peakIndexInMountainArray = function (arr) {
 
   while (left <= right) {
     const middle = Math.floor((left + right) / 2);
-    if (arr[middle + 1] > arr[middle]) {
-      left = middle + 1;
-    } else {
-      right = middle - 1;
-    }
+    arr[middle + 1] > arr[middle] ? left = middle + 1 :  right = middle - 1;
   }
   return left;
 };
