@@ -9,20 +9,17 @@ var networkDelayTime = function (times, n, k) {
         graph[u].push([v, w]);
     }
 
-    let max = 0
     const visited = new Set();
     const minHeap = new MinPriorityQueue()
     minHeap.enqueue(k, 0)
 
     while (!minHeap.isEmpty()) {
-
         const { element: currentNode, priority: distance } = minHeap.dequeue();
 
         if (visited.has(currentNode)) continue;
         visited.add(currentNode);
 
-        max = Math.max(max, distance)
-        if (n === visited.size) return max;
+        if (n === visited.size) return distance;
 
         if (!graph[String(currentNode)]) continue
 
