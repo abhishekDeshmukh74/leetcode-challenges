@@ -5,7 +5,7 @@
 // Follow-up? Could you use search pruning to make your solution faster with a larger board?
 // If the length of the 'word' is greater than the size of the 'board'(#rows * #cols) we can simply return False.Also, we can check if each character in 'word' exists in 'board', if there is at least one character that does not exist in 'board' we can simply return False. Performing these two prunings we can return False immediately instead of computing further.
 
-var exist = function (board, word) {
+const exist = (board, word) => {
 
     if (board.length === 0 || word.length === 0) return false;
 
@@ -16,13 +16,14 @@ var exist = function (board, word) {
         if (wordIndex === word.length) return true
         if (i < 0 || j < 0 || i > board.length - 1 || j > board[0].length - 1) return false;
         if (word[wordIndex] !== board[i][j]) return false;
-        if (visited.has(`${i}-${j}`)) return false;
+        const key = `${i}-${j}`
+        if (visited.has(key)) return false;
 
-        visited.add(`${i}-${j}`)
+        visited.add(key)
         const result = dfs(i + 1, j, wordIndex + 1) || dfs(i - 1, j, wordIndex + 1) ||
             dfs(i, j + 1, wordIndex + 1) || dfs(i, j - 1, wordIndex + 1)
 
-        visited.delete(`${i}-${j}`)
+        visited.delete(key)
         return result
     }
 
