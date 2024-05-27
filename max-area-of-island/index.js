@@ -1,6 +1,5 @@
 var maxAreaOfIsland = function (grid) {
   let maxArea = 0;
-  const visited = new Set();
 
   const exploreArea = (i, j) => {
     let area = 0;
@@ -15,17 +14,20 @@ var maxAreaOfIsland = function (grid) {
 
     while (queue.length) {
       const [i, j] = queue.shift();
-      const key = `${i}-${j}`;
-      if (visited.has(key)) continue;
-      visited.add(key);
+      if (grid[i][j] === 0) continue;
+      grid[i][j] = 0;
       area++;
       for (const [di, dj] of directions) {
         const newI = i + di;
         const newJ = j + dj;
-        const newKey = `${newI}-${newJ}`;
-        const iInbounds = newI >= 0 && newI < grid.length;
-        const jInbounds = newJ >= 0 && newJ < grid[0].length;
-        if (!iInbounds || !jInbounds || grid[newI][newJ] !== 1 || visited.has(newKey)) continue;
+        if (
+          newI < 0 ||
+          newJ < 0 ||
+          newI >= grid.length ||
+          newJ >= grid[0].length ||
+          grid[newI][newJ] === 0
+        )
+          continue;
         queue.push([newI, newJ]);
       }
     }
@@ -34,8 +36,7 @@ var maxAreaOfIsland = function (grid) {
 
   for (let i = 0; i < grid.length; i++) {
     for (let j = 0; j < grid[i].length; j++) {
-      const key = `${i}-${j}`;
-      if (grid[i][j] === 1 && !visited.has(key)) {
+      if (grid[i][j] === 1) {
         const currentArea = exploreArea(i, j);
         if (currentArea > maxArea) maxArea = currentArea;
       }
@@ -56,7 +57,6 @@ console.log(
     [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
   ])
 );
-
 console.log(
   maxAreaOfIsland([
     [1, 1, 0, 0, 0],
@@ -65,3 +65,4 @@ console.log(
     [0, 0, 0, 1, 1],
   ])
 );
+console.log(maxAreaOfIsland([[0, 0, 0, 0, 0, 0, 0, 0]]));
