@@ -1,27 +1,24 @@
 // Recursive DFS
 var numIslands = function (grid) {
   let count = 0;
-  const visited = new Set();
-
   const explore = (r, c) => {
-    const rInbounds = r >= 0 && r < grid.length;
-    const cInbounds = c >= 0 && c < grid[0].length;
-    const pos = r + '-' + c;
-    if (!rInbounds || !cInbounds || grid[r][c] === '0' || visited.has(pos)) return false;
-    visited.add(pos);
+    if (r < 0 || r >= grid.length || c < 0 || c >= grid[0].length) return false;
+    if (grid[r][c] === "0") return false;
+    grid[r][c] = "0";
     explore(r + 1, c);
     explore(r - 1, c);
     explore(r, c + 1);
     explore(r, c - 1);
-    return true;
   };
 
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[0].length; c++) {
-      if (explore(r, c)) count++;
+      if (grid[r][c] === "1") {
+        explore(r, c);
+        count++;
+      }
     }
   }
-
   return count;
 };
 
@@ -48,9 +45,14 @@ var numIslands = function (grid) {
         const newC = col + cOffset;
         const newRInbounds = newR >= 0 && newR < grid.length;
         const newCInbounds = newC >= 0 && newC < grid[0].length;
-        const newPos = newR + '-' + newC;
+        const newPos = newR + "-" + newC;
 
-        if (!newRInbounds || !newCInbounds || grid[newR][newC] === '0' || visited.has(newPos))
+        if (
+          !newRInbounds ||
+          !newCInbounds ||
+          grid[newR][newC] === "0" ||
+          visited.has(newPos)
+        )
           continue;
         visited.add(newPos);
         queue.push([newR, newC]);
@@ -60,8 +62,8 @@ var numIslands = function (grid) {
 
   for (let r = 0; r < grid.length; r++) {
     for (let c = 0; c < grid[0].length; c++) {
-      const pos = r + '-' + c;
-      if (grid[r][c] === '1' && !visited.has(pos)) {
+      const pos = r + "-" + c;
+      if (grid[r][c] === "1" && !visited.has(pos)) {
         bfs(r, c);
         islands++;
       }
@@ -72,17 +74,17 @@ var numIslands = function (grid) {
 
 console.log(
   numIslands([
-    ['1', '1', '0', '0', '0'],
-    ['1', '1', '0', '0', '0'],
-    ['0', '0', '1', '0', '0'],
-    ['0', '0', '0', '1', '1'],
+    ["1", "1", "0", "0", "0"],
+    ["1", "1", "0", "0", "0"],
+    ["0", "0", "1", "0", "0"],
+    ["0", "0", "0", "1", "1"],
   ])
 );
 console.log(
   numIslands([
-    ['1', '1', '1', '1', '0'],
-    ['1', '1', '0', '1', '0'],
-    ['1', '1', '0', '0', '0'],
-    ['0', '0', '0', '0', '0'],
+    ["1", "1", "1", "1", "0"],
+    ["1", "1", "0", "1", "0"],
+    ["1", "1", "0", "0", "0"],
+    ["0", "0", "0", "0", "0"],
   ])
 );
