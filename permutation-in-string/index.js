@@ -69,19 +69,14 @@ var checkInclusion = function (s1, s2) {
 
         // remove left
         s2Map[s2LeftChar]--
-        if (s2Map[s2LeftChar] === s1Map[s2LeftChar]) {
-            matches++
-        } else if (s2Map[s2LeftChar] === s1Map[s2LeftChar] - 1) {
-            matches--
-        }
+        if (s2Map[s2LeftChar] === s1Map[s2LeftChar]) matches++
+        if (s2Map[s2LeftChar] === s1Map[s2LeftChar] - 1) matches--
 
         // add right
         s2Map[s2RightChar]++
-        if (s2Map[s2RightChar] === s1Map[s2RightChar]) {
-            matches++
-        } else if (s2Map[s2RightChar] === s1Map[s2RightChar] + 1) {
-            matches--
-        }
+        if (s2Map[s2RightChar] === s1Map[s2RightChar]) matches++
+        if (s2Map[s2RightChar] === s1Map[s2RightChar] + 1) matches--
+
         left++
         right++
     }
@@ -90,3 +85,5 @@ var checkInclusion = function (s1, s2) {
 
 console.log(checkInclusion('ab', 'eidbaooo'));
 console.log(checkInclusion('ab', 'eidboaoo'));
+console.log(checkInclusion('abc', 'bbbca'));
+
