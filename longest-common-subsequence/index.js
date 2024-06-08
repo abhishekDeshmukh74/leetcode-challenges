@@ -4,11 +4,11 @@
 
 var longestCommonSubsequence = function (text1, text2) {
 
+    if (text1.length === 0 || text2.length === 0) return 0
     const memo = {};
 
     var dfs = function (i = 0, j = 0) {
 
-        if (text1.length === 0 || text2.length === 0) return 0
         if (i >= text1.length || j >= text2.length) return 0
 
         const key = `${i}-${j}`
