@@ -4,7 +4,7 @@ var findRedundantConnection = function (edges) {
     const rank = Array(edges.length + 1).fill(1)
 
     const find = (n) => {
-        p = parent[n]
+        let p = parent[n]
         while (p !== parent[p]) p = parent[parent[p]]
         return p
     }
