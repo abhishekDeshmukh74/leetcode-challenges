@@ -7,80 +7,53 @@ class Node {
     }
 }
 
-class DoublyLinkedList {
-    constructor() {
-        this.head = null;
-        this.tail = null;
-        this.length = 0;
+class LRUCache {
+    constructor(capacity) {
+        this.map = new Map();
+        this.capacity = capacity;
+        this.head = new Node(0, 0);
+        this.tail = new Node(0, 0);
+        this.head.next = this.tail;
+        this.tail.prev = this.head;
     }
 
-    push(key, val) {
-        const newNode = new Node(key, val);
-        if (!this.head) {
-            this.head = newNode;
-            this.tail = newNode;
-        } else {
-            this.tail.next = newNode;
-            newNode.prev = this.tail;
-            this.tail = newNode;
-        }
-        this.length++;
-        return newNode;
+    insert(node) {
+        this.map.set(node.key, node);
+        const headNext = this.head.next;
+        this.head.next = node;
+        node.prev = this.head;
+        node.next = headNext;
+        headNext.prev = node;
     }
 
     remove(node) {
-        if (!node.next && !node.prev) { // if there's only 1 node
-            this.head = null;
-            this.tail = null;
-        } else if (!node.next) { // if the node is tail node
-            this.tail = node.prev;
-            this.tail.next = null;
-        } else if (!node.prev) { // if the node is head node
-            this.head = node.next;
-            this.head.prev = null;
-        } else { // if the node is in between
-            const prev = node.prev;
-            const next = node.next;
-            prev.next = next;
-            next.prev = prev;
-        }
-        this.length--;
-    }
-}
-
-class LRUCache {
-    constructor(capacity) {
-        this.DLL = new DoublyLinkedList();
-        this.map = {};
-        this.capacity = capacity;
+        this.map.delete(node.key);
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
 
     get(key) {
-        if (!this.map[key]) return -1;
-        const value = this.map[key].val;
-        this.DLL.remove(this.map[key]);
-        this.map[key] = this.DLL.push(key, value);
-        return value;
+        if (!this.map.has(key)) return -1;
+        const node = this.map.get(key);
+        this.remove(node);
+        this.insert(node);
+        return node.val;
     }
 
     put(key, value) {
-        if (this.map[key]) this.DLL.remove(this.map[key]);
-        this.map[key] = this.DLL.push(key, value);
-        if (this.DLL.length > this.capacity) {
-            const currKey = this.DLL.head.key;
-            delete this.map[currKey];
-            this.DLL.remove(this.DLL.head);
-        }
+        if (this.map.has(key)) this.remove(this.map.get(key));
+        if (this.map.size >= this.capacity) this.remove(this.tail.prev);
+        this.insert(new Node(key, value));
     }
 }
 
-var lRUCache = new LRUCache(2)
+var lRUCache = new LRUCache(2);
 lRUCache.put(1, 1); // cache is {1=1}
 lRUCache.put(2, 2); // cache is {1=1, 2=2}
-console.log(lRUCache.get(1));     // return 1
+console.log(lRUCache.get(1)); // return 1
 console.log(lRUCache.put(3, 3)); // LRU key was 2, evicts key 2, cache is {1=1, 3=3}
-console.log(lRUCache.get(2));    // returns -1 (not found)
+console.log(lRUCache.get(2)); // returns -1 (not found)
 console.log(lRUCache.put(4, 4)); // LRU key was 1, evicts key 1, cache is {4=4, 3=3}
-console.log(lRUCache.get(1));    // return -1 (not found)
-console.log(lRUCache.get(3));    // return 3
-console.log(lRUCache.get(4));    // return 4
+console.log(lRUCache.get(1)); // return -1 (not found)
+console.log(lRUCache.get(3)); // return 3
+console.log(lRUCache.get(4)); // return 4
