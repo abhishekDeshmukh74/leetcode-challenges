@@ -1,7 +1,6 @@
 // Brute force solution will take 0(2^n)
 
 // Recursive solution
-// Map is used to avoid recomputing
 var climbStairs = function (n) {
   const map = new Map();
   if (n === 1 || n === 2)  return n;
