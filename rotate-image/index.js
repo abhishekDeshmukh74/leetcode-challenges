@@ -25,6 +25,7 @@ var rotate = function (matrix) {
   return matrix;
 };
 
+console.log(rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
 console.log(
   rotate([
     [5, 1, 9, 11],
