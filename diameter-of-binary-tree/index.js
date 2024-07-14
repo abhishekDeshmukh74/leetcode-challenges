@@ -17,10 +17,10 @@ node2.right = node5;
 // Recursive Top-Down will have O(n^2), but recursive bottom-up will have O(n)
 var diameterOfBinaryTree = function (root, max = 0) {
     const dfs = (root) => {
-        if (!root) return -1
+        if (!root) return 0
         const leftHeight = dfs(root.left)
         const rightHeight = dfs(root.right)
-        max = Math.max(max, leftHeight + rightHeight + 2)
+        max = Math.max(max, leftHeight + rightHeight)
         return 1 + Math.max(leftHeight, rightHeight)
     }
     dfs(root)

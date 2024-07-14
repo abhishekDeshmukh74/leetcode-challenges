@@ -17,7 +17,7 @@ node20.right = node7
 // Recursive DFS - Time complexity O(n)
 var maxDepth = function (root) {
   if (!root) return 0;
-  return Math.max(1 + maxDepth(root.left), 1 + maxDepth(root.right));
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 };
 
 // Iterative DFS - Time complexity O(n)
