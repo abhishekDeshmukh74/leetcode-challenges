@@ -21,16 +21,14 @@ node20.right = node7
 // Space complexity: O(H), where H is a tree height, to keep the recursion stack. In the average case of balanced tree, the tree height H = logN, in the worst case of skewed tree, H = N.
 
 var maxPathSum = function (root) {
+    let max = -Infinity
 
-    let max = -Infinity;
-    const dfs = (root) => {
-        if (!root) return 0;
-
-        const leftMax = Math.max(dfs(root.left), 0)
-        const rightMax = Math.max(dfs(root.right), 0)
-
-        max = Math.max(max, leftMax + rightMax + root.val)
-        return root.val + Math.max(leftMax, rightMax)
+    const dfs = (node) => {
+        if (!node) return 0
+        const leftMax = Math.max(dfs(node.left), 0)
+        const rightMax = Math.max(dfs(node.right), 0)
+        max = Math.max(max, leftMax + rightMax + node.val)
+        return node.val + Math.max(leftMax, rightMax)
     }
     dfs(root)
     return max;
