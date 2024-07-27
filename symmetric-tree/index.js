@@ -20,25 +20,16 @@ pNode2.right = pNode3
 qNode2.left = null
 qNode2.right = pNode3
 
-// Not that efficient
 var isSymmetric = function (root) {
-  if (!root) return true
-  const queue = [root]
+  if (!root) return true;
 
-  while (queue.length) {
-    const currentLevelLength = queue.length
-    const copyQueue = queue.slice(0)
-    for (let i = 0; i < currentLevelLength; i++) {
-      const current = queue.shift()
-      const copy = copyQueue.pop()
-      if (current) {
-        if (current.val !== copy?.val) return false
-        queue.push(current.left)
-        queue.push(current.right)
-      }
-    }
+  const dfs = (root1, root2) => {
+    if (!root1 && !root2) return true
+    if (!root1 || !root2) return false
+    if (root1.val !== root2.val) return false
+    return dfs(root1.left, root2.right) && dfs(root1.right, root2.left);
   }
-  return true;
+  return dfs(root.left, root.right)
 };
 
 console.log(isSymmetric(root));
