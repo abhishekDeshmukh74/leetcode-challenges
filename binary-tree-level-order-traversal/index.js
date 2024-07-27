@@ -15,24 +15,21 @@ node20.left = node15
 node20.right = node7
 
 var levelOrder = function (root) {
-  if (!root) return []
-  const queue = [root]
-  const levels = []
-
+  if (!root) return [];
+  const queue = [root];
+  const levels = [];
   while (queue.length) {
-    const level = []
-    const currentLevelQueueLength = queue.length
+    const level = [];
+    const currentLevelQueueLength = queue.length;
     for (let i = 0; i < currentLevelQueueLength; i++) {
-      const current = queue.shift()
-      if (current) {
-        level.push(current.val)
-        queue.push(current.left)
-        queue.push(current.right)
-      }
+      const current = queue.shift();
+      level.push(current.val);
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
     }
-    if (level.length) levels.push(level)
+    if (level.length) levels.push(level);
   }
-  return levels
+  return levels;
 };
 
 console.log(levelOrder(root));
