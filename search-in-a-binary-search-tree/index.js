@@ -14,18 +14,18 @@ root.right = node7
 node2.left = node1
 node2.right = node3
 
-// var searchBST = function (root, val) {
-//   let current = root;
-//   while (current) {
-//     if (val === current.val) return current;
-//     if (val < current.val) {
-//       current = current.left;
-//     } else {
-//       current = current.right;
-//     }
-//   }
-//   return null;
-// };
+var searchBST = function (root, val) {
+  let current = root;
+  while (current) {
+    if (val === current.val) return current;
+    if (val < current.val) {
+      current = current.left;
+    } else {
+      current = current.right;
+    }
+  }
+  return null;
+};
 
 var searchBST = function (root, val) {
   if (!root) return root;
@@ -40,6 +40,13 @@ var searchBST = function (root, val) {
     }
   }
   return null;
+};
+
+var searchBST = function (root, val) {
+  while (root?.val !== val ) {
+    root = val < root.val ? root.left : root.right
+  }
+  return root
 };
 
 console.log(searchBST(root, 2));
