@@ -36,4 +36,24 @@ var kthSmallest = function (root, k) {
     }
 };
 
+var kthSmallest = function (root, k) {
+    let count = 0;
+    let result;
+
+    const inOrder = (node) => {
+        if (!node) return;
+
+        inOrder(node.left);
+        count++;
+        if (count === k) {
+            result = node.val;
+            return;
+        }
+        inOrder(node.right);
+    };
+
+    inOrder(root);
+    return result;
+};
+
 console.log(kthSmallest(root, 3));
