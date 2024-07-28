@@ -58,7 +58,7 @@ var deserialize = function (data) {
             queue.push(left)
         }
         i++
-        if (i < values.length && values[i] !== 'n') {
+        if (values[i] !== 'n') {
             const right = new TreeNode(parseInt(values[i]))
             parent.right = right
             queue.push(right)
