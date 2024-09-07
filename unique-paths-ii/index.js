@@ -1,32 +1,68 @@
+// Recursive way(Top-down)
+// Time complexity: O(N×M)
+// Space complexity: O(N×M)
 var uniquePathsWithObstacles = function (obstacleGrid) {
 
-    // If the starting cell has an obstacle, then simply return as there would be no paths to the destination
-    if (obstacleGrid[0][0]) return 0
+    const dp = Array(obstacleGrid.length).fill().map(() => Array(obstacleGrid[0].length).fill())
 
-    // Number of ways of reaching the starting cell = 1
-    obstacleGrid[0][0] = 1
+    const dfs = (i, j) => {
+        if (i < 0 || j < 0) return 0;
+        if (obstacleGrid[i][j] === 1) return 0;
 
-    // Filling the values for the first column
-    for (let i = 1; i < obstacleGrid.length; i++) {
-        obstacleGrid[i][0] = (obstacleGrid[i][0] == 0 && obstacleGrid[i - 1][0] == 1) ? 1 : 0;
+        if (dp[i][j]) return dp[i][j];
+        if (i === 0 && j === 0) return 1;
+
+        return dp[i][j] = dfs(i - 1, j) + dfs(i, j - 1);
     }
+    return dfs(obstacleGrid.length - 1, obstacleGrid[0].length - 1)
+};
 
-    // Filling the values for the first row
-    for (let i = 1; i < obstacleGrid[0].length; i++) {
-        obstacleGrid[0][i] = (obstacleGrid[0][i] == 0 && obstacleGrid[0][i - 1] == 1) ? 1 : 0;
-    }
-    // Starting from cell(1,1) fill up the values
-    // No of ways of reaching cell[i][j] = cell[i - 1][j] + cell[i][j - 1]
-    for (let i = 1; i < obstacleGrid.length; i++) {
-        for (let j = 1; j < obstacleGrid[i].length; j++) {
+// Iterative/tabular way(Bottom-up)
+// Time complexity: O(N×M)
+// Space complexity: O(N×M)
+var uniquePathsWithObstacles = function (obstacleGrid) {
+
+    const dp = Array(obstacleGrid.length).fill().map(() => Array(obstacleGrid[0].length).fill(0))
+
+    for (let i = 0; i < obstacleGrid.length; i++) {
+        for (let j = 0; j < obstacleGrid[i].length; j++) {
             if (obstacleGrid[i][j] === 1) {
-                obstacleGrid[i][j] = 0
+                dp[i][j] = 0
+            } else if (i === 0 && j === 0) {
+                dp[i][j] = 1
             } else {
-                obstacleGrid[i][j] = obstacleGrid[i - 1][j] + obstacleGrid[i][j - 1];
+                if (i > 0) dp[i][j] += dp[i - 1][j]
+                if (j > 0) dp[i][j] += dp[i][j - 1]
             }
         }
     }
-    return obstacleGrid[obstacleGrid.length - 1][obstacleGrid[0].length - 1];
+    return dp[obstacleGrid.length - 1][obstacleGrid[0].length - 1]
+};
+
+// Iterative/tabular way(Bottom-up) 1D space optimization
+// Time complexity: O(N×M)
+// Space complexity: O(M)
+var uniquePathsWithObstacles = function (obstacleGrid) {
+
+    let prev = Array(obstacleGrid[0].length).fill(0)
+
+    for (let i = 0; i < obstacleGrid.length; i++) {
+        const current = Array(obstacleGrid[0].length).fill(0)
+        for (let j = 0; j < obstacleGrid[i].length; j++) {
+            if (obstacleGrid[i][j] === 1) {
+                current[j] = 0
+            } else if (i === 0 && j === 0) {
+                current[j] = 1
+            } else {
+                if (i > 0) current[j] += prev[j]
+                if (j > 0) current[j] += current[j - 1]
+            }
+        }
+        prev = current
+    }
+    return prev[obstacleGrid[0].length - 1]
 };
 
 console.log(uniquePathsWithObstacles([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
+console.log(uniquePathsWithObstacles([[0, 1], [0, 0]]))
+console.log(uniquePathsWithObstacles([[0, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 0], [0, 0, 1, 0], [0, 0, 0, 0]]))

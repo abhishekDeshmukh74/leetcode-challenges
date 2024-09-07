@@ -21,10 +21,10 @@ var rightSideView = function (root) {
   const queue = [root];
 
   while (queue.length) {
+    rightSideValues.push(queue[queue.length - 1].val);
     const qLength = queue.length;
     for (let i = 0; i < qLength; i++) {
       const current = queue.shift();
-      if (i === qLength - 1) rightSideValues.push(current.val);
       current.left && queue.push(current.left);
       current.right && queue.push(current.right);
     }

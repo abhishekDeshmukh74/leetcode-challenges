@@ -1,18 +1,18 @@
 var rob = function (nums) {
-  const helper = (arr) => {
-    let rob1 = 0;
-    let rob2 = 0;
-    for (const num of arr) {
-      const newRob = Math.max(rob1 + num, rob2);
-      rob1 = rob2;
-      rob2 = newRob;
+  var robHelper = (start, end) => {
+    let prev2 = 0;
+    let prev1 = nums[start];
+    for (let i = start + 1; i <= end; i++) {
+      const current = Math.max(nums[i] + prev2, prev1);
+      prev2 = prev1;
+      prev1 = current;
     }
-    return rob2;
+    return prev1;
   };
 
   if (nums.length === 1) return nums[0];
-  const withoutFirst = helper(nums.slice(1));
-  const withoutLast = helper(nums.slice(0, nums.length - 1));
+  const withoutFirst = robHelper(0, nums.length - 2);
+  const withoutLast = robHelper(1, nums.length - 1);
   return Math.max(withoutFirst, withoutLast);
 };
 

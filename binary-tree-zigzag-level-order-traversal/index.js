@@ -25,11 +25,11 @@ var zigzagLevelOrder = function (root) {
 
         for (let i = 0; i < currentLength; i++) {
             const current = queue.shift();
-            levelResult.push(current.val)
+            result.length % 2 === 0 ? levelResult[i] = current.val : levelResult[currentLength - 1 - i] = current.val
             current.left && queue.push(current.left);
             current.right && queue.push(current.right);
         }
-        result.length % 2 === 0 ? result.push(levelResult) : result.push(levelResult.reverse())
+        result.push(levelResult);
     }
     return result
 };

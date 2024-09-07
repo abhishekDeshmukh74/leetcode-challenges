@@ -9,20 +9,10 @@ const node1 = new TreeNode(1)
 const node4 = new TreeNode(4)
 const node3 = new TreeNode(3)
 const node6 = new TreeNode(6)
-
 root.left = node1
 root.right = node4
 node4.left = node3
 node4.right = node6
-
-// Recursive DFS
-// var isValidBST = function (root, min = -Infinity, max = Infinity) {
-//   if (!root) return true;
-
-//   if (root.val <= min || root.val >= max) return false;
-
-//   return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
-// };
 
 // Iterative BFS
 var isValidBST = function (root) {
@@ -37,6 +27,15 @@ var isValidBST = function (root) {
     current.right && queue.push([current.right, current.val, max]);
   }
   return true;
+};
+
+// Recursive DFS
+var isValidBST = function (root, min = -Infinity, max = Infinity) {
+  if (!root) return true;
+
+  if (root.val <= min || root.val >= max) return false;
+
+  return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
 };
 
 console.log(isValidBST(root));

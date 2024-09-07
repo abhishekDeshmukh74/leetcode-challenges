@@ -4,25 +4,15 @@ function TreeNode(val, left, right) {
   this.right = right === undefined ? null : right
 }
 
-const root = new TreeNode(3)
-const node9 = new TreeNode(9)
-const node20 = new TreeNode(20)
-const node15 = new TreeNode(15)
-const node7 = new TreeNode(7)
-root.left = node9;
-root.right = node20;
-node20.left = node15;
-node20.right = node7;
-
 var buildTree = function (preOrder, inOrder) {
-  const map = new Map()
-  inOrder.forEach((element, index) => map.set(element, index));
+  const inorderIndexMap = new Map()
+  inOrder.forEach((element, index) => inorderIndexMap.set(element, index));
 
   const getTree = (pStart = 0, pEnd = preOrder.length - 1, iStart = 0, iEnd = inOrder.length - 1) => {
     if (pStart > pEnd || iStart > iEnd) return null
 
     const root = new TreeNode(preOrder[pStart]);
-    const rootIndex = map.get(preOrder[pStart]);
+    const rootIndex = inorderIndexMap.get(preOrder[pStart]);
     const numsLeft = rootIndex - iStart
 
     root.left = getTree(pStart + 1, pStart + numsLeft, iStart, iStart + rootIndex - 1);

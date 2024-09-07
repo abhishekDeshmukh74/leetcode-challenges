@@ -34,28 +34,23 @@ node4_2.left = node22_2
 const verticalTraversal = root => {
     if (!root) return;
 
-    const output = [];
+    const map = new Map();
+
     const traverse = (root, row, col) => {
-        output.push([root.val, row, col]);
+        if (!map.has(col)) map.set(col, [])
+        map.get(col).push([root.val, row, col]);
         if (root.left) traverse(root.left, row + 1, col - 1);
         if (root.right) traverse(root.right, row + 1, col + 1);
     };
 
     traverse(root, 0, 0);
-    // sort array by col then row then val
-    output.sort(([valA, rowA, colA], [valB, rowB, colB]) => {
-        if (colA !== colB) return colA - colB; // col
-        if (rowA !== rowB) return rowA - rowB; // row
-        return valA - valB; // val
-    });
 
-    // create output array by col and push values
-    const map = new Map();
-    for (const [val, row, col] of output) {
-        if (!map.has(col)) map.set(col, []);
-        map.get(col).push(val);
-    }
-    return [...map.values()];
+    return Array.from(map.keys())
+        .sort((a, b) => a - b) // sort map keys i.e. col
+        .map(key =>
+            map.get(key).sort((a, b) => a[1] - b[1] || a[0] - b[0]) // sort map values with row, val
+                .map(each => each[0])
+        );
 };
 
 console.log(verticalTraversal(root))
