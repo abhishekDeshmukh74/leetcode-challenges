@@ -5,51 +5,64 @@
 var longestCommonSubsequence = function (text1, text2) {
 
     if (text1.length === 0 || text2.length === 0) return 0
-    const memo = {};
+    const dp = Array(text1.length + 1).fill().map(() => Array(text2.length + 1).fill())
 
-    var dfs = function (i = 0, j = 0) {
+    var dfs = function (i, j) {
+        if (i < 0 || j < 0) return 0
 
-        if (i >= text1.length || j >= text2.length) return 0
+        if (dp[i][j] !== undefined) return dp[i][j]
 
-        const key = `${i}-${j}`
-        if (key in memo) return memo[key]
-
-        if (text1[i] === text2[j]) {
-            memo[key] = 1 + dfs(i + 1, j + 1)
-        } else {
-            memo[key] = Math.max(
-                dfs(i + 1, j),
-                dfs(i, j + 1)
-            )
-        }
-        return memo[key]
+        if (text1[i] === text2[j]) return dp[i][j] = 1 + dfs(i - 1, j - 1)
+        return dp[i][j] = Math.max(dfs(i - 1, j), dfs(i, j - 1))
     };
-    return dfs(0, 0);
+    return dfs(text1.length - 1, text2.length - 1);
 };
 
 // Iterative
 // Time complexity: O(M⋅N). We're solving M⋅N subproblems. Solving each subproblem is an O(1) operation.
 // Space complexity: O(M⋅N). We'e allocating a 2D array of size M⋅N to save the answers to subproblems.
-
 var longestCommonSubsequence = function (text1, text2) {
 
-    const table = Array(text1.length + 1).fill().map(() => Array(text2.length + 1).fill(0))
+    if (text1.length === 0 || text2.length === 0) return 0
+    const dp = Array(text1.length + 1).fill().map(() => Array(text2.length + 1).fill(0))
 
     for (let i = 1; i <= text1.length; i++) {
 
         for (let j = 1; j <= text2.length; j++) {
 
             if (text1[i - 1] === text2[j - 1]) {
-                table[i][j] = 1 + table[i - 1][j - 1]
+                dp[i][j] = 1 + dp[i - 1][j - 1]
             } else {
-                table[i][j] = Math.max(table[i - 1][j], table[i][j - 1])
+                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1])
             }
         }
     }
-    return table[text1.length][text2.length]
+    return dp[text1.length][text2.length]
+};
+
+// Iterative - 1D space optimization
+var longestCommonSubsequence = function (text1, text2) {
+
+    if (text1.length === 0 || text2.length === 0) return 0
+    let prev = Array(text2.length + 1).fill(0)
+
+    for (let i = 1; i <= text1.length; i++) {
+        let current = Array(text2.length + 1).fill(0)
+
+        for (let j = 1; j <= text2.length; j++) {
+            if (text1[i - 1] === text2[j - 1]) {
+                current[j] = 1 + prev[j - 1]
+            } else {
+                current[j] = Math.max(prev[j], current[j - 1])
+            }
+        }
+        prev = current
+    }
+    return prev[text2.length]
 };
 
 console.log(longestCommonSubsequence('abcde', 'ace'))
 console.log(longestCommonSubsequence('abc', 'def'))
+console.log(longestCommonSubsequence('abcba', 'abcbcba'))
 console.log(longestCommonSubsequence('lmrejgzsbqpkdonytkbknstsxifofmrktcpq', 'hklcrebcjipetgnmlqvijovmlgripwratarmt'))
 console.log(longestCommonSubsequence('opmtqvejqvudezchsloxizynabehqbyzknunobehkzqtkt', 'srwbovohkvqhwrwvizebsrszcxepqrenilmvadqxuncpwhe'))
