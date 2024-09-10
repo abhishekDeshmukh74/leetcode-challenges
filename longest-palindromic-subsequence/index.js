@@ -8,7 +8,6 @@ var longestPalindromeSubseq = function (s, t = s.split('').reverse().join('')) {
 
     const lcs = (i, j) => {
         if (i < 0 || j < 0) return 0
-
         if (dp[i][j] !== undefined) return dp[i][j]
 
         if (s[i] === t[j]) {

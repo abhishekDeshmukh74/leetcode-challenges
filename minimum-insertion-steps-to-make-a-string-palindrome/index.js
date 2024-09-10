@@ -13,7 +13,7 @@ var minInsertions = function (s, t = s.split('').reverse().join('')) {
     }
 
     const diff = s.length + t.length - 2 * table[s.length][t.length]
-    return diff % 2 === 0 ? diff / 2 : Math.floor(diff / 2)
+    return Math.floor(diff / 2)
 };
 
 console.log(minInsertions('zzazz'))
