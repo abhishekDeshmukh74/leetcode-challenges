@@ -1,22 +1,28 @@
+// Time complexity of the `permute` function is O(N * N!)
 var permute = function (nums) {
-  if (nums?.length === 0) return [[]];
+  const answer = []
+  const counter = []
 
-  const [first, ...rest] = nums;
-  const permutationsWithoutFirst = permute(rest);
+  const dfs = (i, arr) => {
 
-  const allPermutations = [];
+    if (arr.length === nums.length) {
+      answer.push([...arr])
+      return
+    }
 
-  for (let i = 0; i < permutationsWithoutFirst.length; i++) {
-    for (let j = 0; j <= permutationsWithoutFirst[i].length; j++) {
-      const permWithFirst = [
-        ...permutationsWithoutFirst[i].slice(0, j),
-        first,
-        ...permutationsWithoutFirst[i].slice(j),
-      ];
-      allPermutations.push(permWithFirst);
+    for (let i = 0; i < nums.length; i++) {
+      if (counter[i]) continue;
+
+      counter[i] = true
+      arr.push(nums[i])
+      dfs(i + 1, arr, counter)
+      counter[i] = false
+      arr.pop()
     }
   }
-  return allPermutations;
+
+  dfs(0, [], counter)
+  return answer
 };
 
 console.log(permute([1, 2, 3]));
