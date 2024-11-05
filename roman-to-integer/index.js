@@ -14,12 +14,7 @@ var romanToInt = function (s) {
         const current = romanNumerals[s[i]];
         const next = romanNumerals[s[i + 1]];
 
-        if (next && current < next) {
-            sum += next - current;
-            i++;
-        } else {
-            sum += current;
-        }
+        (next && current < next) ? sum -= current : sum += current
     }
     return sum;
 };
