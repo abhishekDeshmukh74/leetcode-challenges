@@ -16,13 +16,12 @@ var fizzBuzz = function (n) {
 
 var fizzBuzz = function (n) {
   const ans = [];
-
   const fizzBuzzDict = {
     3: "Fizz",
     5: "Buzz"
   };
 
-  const divisors = Object.keys(fizzBuzzDict).map(Number);
+  const divisors = Object.keys(fizzBuzzDict);
 
   for (let num = 1; num <= n; num++) {
     let numAnsStr = "";
@@ -33,10 +32,7 @@ var fizzBuzz = function (n) {
       }
     }
 
-    if (numAnsStr === "") {
-      numAnsStr = num.toString();
-    }
-
+    if (numAnsStr === "") numAnsStr += num;
     ans.push(numAnsStr);
   }
 
