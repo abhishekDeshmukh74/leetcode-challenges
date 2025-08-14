@@ -18,20 +18,21 @@
 
 var combinationSum = function (candidates, target) {
     const result = []
-    const dfs = (i, current, currentTotal) => {
-        if (i >= candidates.length || currentTotal > target) return
-        if (currentTotal === target) {
-            result.push([...current])
-            return
+    const dfs = (i, remainder, combination) => {
+        if (i === candidates.length) {
+            if (remainder === 0) result.push([...combination])
+            return;
         }
+        if (candidates[i] <= remainder) {
+            combination.push(candidates[i]);
+            dfs(i, remainder - candidates[i], combination)
+            combination.pop();
+        };
 
-        current.push(candidates[i])
-        dfs(i, current, currentTotal + candidates[i])
-        current.pop()
-        dfs(i + 1, current, currentTotal)
+        dfs(i + 1, remainder, combination)
     }
-    dfs(0, [], 0)
-    return result
+    dfs(0, target, [])
+    return result;
 };
 
 console.log(combinationSum([2, 3, 6, 7], 7))
